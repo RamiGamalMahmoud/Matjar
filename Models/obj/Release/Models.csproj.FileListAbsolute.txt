@@ -1,0 +1,13 @@
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\Models.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\Models.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\DataAccessLayer.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\System.Data.SQLite.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\DataAccessLayer.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\DataAccessLayer.dll.config
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\System.Data.SQLite.xml
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Release\System.Data.SQLite.dll.config
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Release\Models.csprojAssemblyReference.cache
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Release\Models.csproj.CoreCompileInputs.cache
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Release\Models.csproj.CopyComplete
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Release\Models.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Release\Models.pdb

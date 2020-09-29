@@ -1,0 +1,11 @@
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\bin\Debug\GControls.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\bin\Debug\GControls.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\obj\Debug\GControls.Properties.Resources.resources
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\obj\Debug\GControls.csproj.GenerateResource.cache
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\obj\Debug\GControls.csproj.CoreCompileInputs.cache
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\obj\Debug\GControls.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\obj\Debug\GControls.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\bin\Debug\Dapper.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\bin\Debug\Dapper.xml
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\obj\Debug\GControls.csproj.CopyComplete
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\GControls\obj\Debug\GControls.csprojAssemblyReference.cache

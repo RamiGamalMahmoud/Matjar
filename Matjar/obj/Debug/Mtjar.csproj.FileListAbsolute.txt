@@ -1,0 +1,16 @@
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\obj\Debug\Mtjar.csproj.GenerateResource.Cache
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\EntityFramework.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\EntityFramework.SqlServer.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\System.Data.SQLite.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\System.Data.SQLite.EF6.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\System.Data.SQLite.Linq.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\EntityFramework.xml
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\EntityFramework.SqlServer.xml
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\System.Data.SQLite.xml
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\obj\Debug\Mtjar.Form1.resources
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\Matjar.exe.config
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\Matjar.exe
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\bin\Debug\Matjar.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\obj\Debug\Matjar.exe
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\obj\Debug\Matjar.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Mtjar\Mtjar\obj\Debug\Matjar.Properties.Resources.resources

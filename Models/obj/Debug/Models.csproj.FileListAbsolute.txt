@@ -1,0 +1,13 @@
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\Models.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\Models.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\DataAccessLayer.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\System.Data.SQLite.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\DataAccessLayer.pdb
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\DataAccessLayer.dll.config
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\System.Data.SQLite.xml
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\bin\Debug\System.Data.SQLite.dll.config
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Debug\Models.csprojAssemblyReference.cache
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Debug\Models.csproj.CopyComplete
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Debug\Models.dll
+E:\WorkSpace\Programing\Desktop\CSharp\Matjar\Models\obj\Debug\Models.pdb
