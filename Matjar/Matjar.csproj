@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B45EF996-B075-4F54-BFBB-958C2E4EFB0C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Matjar</RootNamespace>
     <AssemblyName>Matjar</AssemblyName>
@@ -152,6 +152,10 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{ddf1c044-3d74-4bc0-87ec-a9afabefd0cc}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Query\Query.csproj">
+      <Project>{f7c52230-73a5-40c3-b371-f478b087c961}</Project>
+      <Name>Query</Name>
     </ProjectReference>
     <ProjectReference Include="..\UserControls\UserControls.csproj">
       <Project>{69c159ae-e353-4079-a4b2-2b61f9b66176}</Project>
