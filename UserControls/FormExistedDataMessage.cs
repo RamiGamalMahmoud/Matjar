@@ -1,12 +1,7 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserControls
@@ -96,14 +91,14 @@ namespace UserControls
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            this.Result = System.Windows.Forms.DialogResult.OK;
+            this.Result = DialogResult.OK;
             save_or_cancel.Checked = true;
             this.Close();
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            this.Result = System.Windows.Forms.DialogResult.Cancel;
+            this.Result = DialogResult.Cancel;
             save_or_cancel.Checked = false;
             this.Close();
         }
