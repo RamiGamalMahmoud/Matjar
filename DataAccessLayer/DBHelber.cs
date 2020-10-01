@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 
 namespace DataAccessLayer
@@ -35,11 +37,36 @@ namespace DataAccessLayer
             return Connection.State == ConnectionState.Open;
         }
 
+        private static DataTable Exec(string query, List<SqlParameter> parameters)
+        {
+            if (!IsConnected()) return null;
+
+            DataTable result = new DataTable();
+            SQLiteCommand cmd = new SQLiteCommand(query, Connection);
+            if (parameters != null)
+            {
+                foreach (SqlParameter par in parameters)
+                {
+                    cmd.Parameters.Add(new SQLiteParameter(par.ParameterName, par.Value));
+                }
+            }
+
+            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(cmd))
+            {
+                using (DataTable tbl_categories = new DataTable())
+                {
+                    adapter.Fill(result);
+                }
+            }
+            return result;
+        }
+
         private static DataTable ExecuteQuery(string query)
         {
             if (!IsConnected()) return null;
 
             DataTable result = new DataTable();
+
             using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, Connection))
             {
                 using (DataTable tbl_categories = new DataTable())
@@ -77,13 +104,21 @@ namespace DataAccessLayer
         // SELECT [get categories]
         public static DataTable Categories()
         {
-            return DBHelber.ExecuteQuery(QueriesStrings.CategoriesQuery());
+            Query.Query query = new Query.Query();
+            query.Select("id, category ")
+              .From("categories");
+
+            return DBHelber.ExecuteQuery(query.QueryString);
         }
 
         // SELECT [get Units]
         public static DataTable Units()
         {
-            return DBHelber.ExecuteQuery(QueriesStrings.UnitsQuery());
+            var query = new Query.Query();
+            query.Select("id, unit")
+                .From("units")
+                .OrderBy("unit", Query.SordOrder.ASC);
+            return DBHelber.ExecuteQuery(query.QueryString);
         }
 
         // get product id from product name and unit
@@ -138,8 +173,13 @@ namespace DataAccessLayer
 
         public static DataTable GetDaySales(string start_date)
         {
-            string query = string.Format("SELECT * FROM sales_view WHERE process_id LIKE '{0}____' ORDER BY process_id", start_date);
-            return DBHelber.ExecuteQuery(query);
+            Query.Query query = new Query.Query();
+            query.Select("*")
+                .From("sales_view")
+                .Where("process_id", "like", $"{start_date}%")
+                .OrderBy("process_id");
+            //string query = string.Format("SELECT * FROM sales_view WHERE process_id LIKE '{0}____' ORDER BY process_id", start_date);
+            return DBHelber.Exec(query.QueryString, query.QueryParams);
         }
 
         // Get the sales table for a process id
