@@ -85,7 +85,7 @@ namespace QueryBuilder
                 throw new Exception("columns count not equal values count");
             }
             this.QueryString += "SET ";
-            for(int i = 0; i < columns.Length; i++)
+            for (int i = 0; i < columns.Length; i++)
             {
                 string key = "@" + columns[i];
                 this.QueryString += $"{columns[i]}={key}";
@@ -107,7 +107,16 @@ namespace QueryBuilder
 
         public Query Where(string column, string op, string criteria)
         {
-            string key = $"@{column}";
+            string key;
+            if (column.Contains("."))
+            {
+                string[] arr = column.Split('.');
+                key = $"@{arr[1]}";
+            }
+            else
+            {
+                key = $"@{column}";
+            }
             this.QueryString += $"WHERE {column} {op} {key} ";
             this.QueryParams.Add(new SqlParameter(key, criteria));
             return this;
@@ -115,7 +124,16 @@ namespace QueryBuilder
 
         public Query AndWhere(string column, string op, string criteria)
         {
-            string key = $"@{column}";
+            string key;
+            if (column.Contains("."))
+            {
+                string[] arr = column.Split('.');
+                key = $"@{arr[1]}";
+            }
+            else
+            {
+                key = $"@{column}";
+            }
             this.QueryString += $"AND {column} {op} {key} ";
             this.QueryParams.Add(new SqlParameter(key, criteria));
             return this;
@@ -123,7 +141,16 @@ namespace QueryBuilder
 
         public Query OrWhere(string column, string op, string criteria)
         {
-            string key = $"@{column}";
+            string key;
+            if (column.Contains("."))
+            {
+                string[] arr = column.Split('.');
+                key = $"@{arr[1]}";
+            }
+            else
+            {
+                key = $"@{column}";
+            }
             this.QueryString += $"OR {column} {op} {key} ";
             this.QueryParams.Add(new SqlParameter(key, criteria));
             return this;
@@ -132,6 +159,40 @@ namespace QueryBuilder
         public Query OrderBy(string column, SordOrder order = SordOrder.ASC)
         {
             this.QueryString += $"ORDER BY {column} {order}";
+            return this;
+        }
+
+        public Query Join(string otherTable)
+        {
+            return this.MakeJoin("JOIN", otherTable);
+        }
+
+        public Query LeftJoin(string otherTable)
+        {
+            return this.MakeJoin("LEFT JOIN", otherTable);
+        }
+
+        public Query RightJoin(string otherTable)
+        {
+            return this.MakeJoin("RIGHT JOIN", otherTable);
+        }
+
+        public Query On(string leftColumn, string rightColumn)
+        {
+            this.QueryString += $"ON {leftColumn} = {rightColumn} ";
+            return this;
+        }
+
+        public Query Clear()
+        {
+            this.QueryString = "";
+            this.QueryParams.Clear();
+            return this;
+        }
+
+        private Query MakeJoin(string type, string leftTable)
+        {
+            this.QueryString += $"{type} {leftTable} ";
             return this;
         }
 
