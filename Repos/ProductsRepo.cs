@@ -1,6 +1,6 @@
 ﻿namespace Repos
 {
-    public class Products
+    public class ProductsRepo
     {
     }
 }
