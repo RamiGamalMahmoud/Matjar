@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using Repos;
 
 
 namespace UserControls
 {
     public partial class UC_Sales : UserControl
     {
-        DataAccessLayer.DBHandler Db { get; set; }
+        private SalesRepo repo { get; } = new SalesRepo();
         public int LastSerial { get; set; }
         public string WorkDay { get; set; }
         public string NextProcessId { get; set; }
 
-        private Models.Product current_product = new Models.Product();
+        private Models.Product CurrentProduct = new Models.Product();
         private Timer timer = new Timer();
 
 
@@ -23,7 +23,9 @@ namespace UserControls
         {
             InitializeComponent();
             foreach (DataGridViewColumn col in dgv_sales.Columns)
+            {
                 col.ContextMenuStrip = dgvDailySalesProperties;
+            }
 
             combo_category_name.DisplayMember = "category";
             combo_category_name.ValueMember = "id";
@@ -42,18 +44,14 @@ namespace UserControls
 
             lbl_work_day.Text = date_picker_work_day.Value.ToString("ddd") + " " + date_picker_work_day.Value.ToString("yyyy/M/d");
             WorkDay = date_picker_work_day.Value.ToString("yyyyMMdd");
-            if (Db == null)
-            {
-                lbl_day_total.Text = "0";
-                timer.Interval = 10;
-                timer.Tick += timer_Tick;
-                timer.Start();
-                Db = new DataAccessLayer.DBHandler();
+            lbl_day_total.Text = "0";
+            timer.Interval = 10;
+            timer.Tick += timer_Tick;
+            timer.Start();
 
-                date_picker_work_day.Value = DateTime.Now.Date;
+            date_picker_work_day.Value = DateTime.Now.Date;
 
-                viewWorkDaySales();
-            }
+            viewWorkDaySales();
             dgv_sales.CellValueChanged += dgv_sales_CellValueChanged;
 
             combo_category_name.DataSource = DataAccessLayer.DBHelber.Categories();
@@ -80,9 +78,9 @@ namespace UserControls
             if (combo_product_name.SelectedValue != null)
             {
                 lbl_product_id.Text = combo_product_name.SelectedValue.ToString();
-                this.current_product.ProductID = int.Parse(combo_product_name.SelectedValue.ToString());
-                lbl_price.Text = this.current_product.selling_price.ToString();
-                lbl_unit.Text = this.current_product.unit_name.ToString();
+                this.CurrentProduct.ProductID = int.Parse(combo_product_name.SelectedValue.ToString());
+                lbl_price.Text = this.CurrentProduct.selling_price.ToString();
+                lbl_unit.Text = this.CurrentProduct.unit_name.ToString();
 
                 upateTotal();
                 text_quantity.Focus();
@@ -92,7 +90,7 @@ namespace UserControls
 
         private void viewWorkDaySales()
         {
-            dgv_sales.DataSource = DataAccessLayer.DBHelber.GetDaySales(WorkDay);
+            this.dgv_sales.DataSource = this.repo.GetDaySales(WorkDay);
             NextProcessId = generateProcessID((DataTable)dgv_sales.DataSource);
         }
         private string generateProcessID(DataTable t)
@@ -127,7 +125,6 @@ namespace UserControls
             NextProcessId = WorkDay.PadRight(12 - LastSerial.ToString().Length, '0') + (LastSerial).ToString();
         }
 
-
         private void upateTotal()
         {
             double price = 0, quantity = 0;
@@ -135,10 +132,6 @@ namespace UserControls
             double.TryParse(text_quantity.Text, out quantity);
             lbl_total.Text = (price * quantity).ToString();
         }
-
-
-
-
 
         private void text_quantity_TextChanged(object sender, EventArgs e)
         {
@@ -165,22 +158,22 @@ namespace UserControls
 
 
             data.Add(NextProcessId);
-            data.Add(this.current_product.ProductID.ToString());
+            data.Add(this.CurrentProduct.ProductID.ToString());
 
             data.Add(text_quantity.Text);
-            data.Add(this.current_product.selling_price.ToString());
+            data.Add(this.CurrentProduct.selling_price.ToString());
 
             data.Add(lbl_total.Text);
             data.Add(DateTime.Now.ToString("HH:mm:ss"));
             data.Add(DateTime.Now.Date.ToShortDateString());
-            data.Add(this.current_product.category_id.ToString());
+            data.Add(this.CurrentProduct.category_id.ToString());
 
-            data.Add(current_product.unit_id.ToString());
+            data.Add(CurrentProduct.unit_id.ToString());
 
-            Db.insertDataIntoTable(data, "sales");
+            this.repo.CreateSales(data);
 
             //DataTable sales_data_table = (DataTable)dgv_sales.DataSource;
-            ((DataTable)dgv_sales.DataSource).Rows.Add(DataAccessLayer.DBHelber.GetProcessSales(NextProcessId).Rows[0].ItemArray);
+            ((DataTable)dgv_sales.DataSource).Rows.Add(this.repo.GetSalesOfProcess(NextProcessId).ItemArray);
             text_quantity.Text = "0";
             text_quantity.Focus();
             text_quantity.SelectAll();
@@ -225,7 +218,7 @@ namespace UserControls
             {
                 for (int i = 0; i < selected.Count; i++)
                 {
-                    Db.DeleteData("sales", selected[i].Cells[0].Value.ToString());
+                    this.repo.RemoveSales(selected[i].Cells[0].Value.ToString());
                     dgv_sales.Rows.Remove(selected[i]);
                 }
                 MessageBox.Show("تم الحذف", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -235,7 +228,7 @@ namespace UserControls
                 dgv_sales.ClearSelection();
                 dgv_sales.Rows[current_row_index].Selected = true;
 
-                Db.DeleteData("sales", dgv_sales.Rows[current_row_index].Cells[0].Value.ToString());
+                this.repo.RemoveSales(dgv_sales.Rows[current_row_index].Cells[0].Value.ToString());
                 dgv_sales.Rows.RemoveAt(current_row_index);
                 MessageBox.Show("تم الحذف", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -263,7 +256,8 @@ namespace UserControls
                 price = double.Parse(dgv_sales.Rows[e.RowIndex].Cells[6].Value.ToString());
                 total = amount * price;
                 process_id = dgv_sales.Rows[e.RowIndex].Cells[0].Value.ToString();
-                Db.UpdateSalesTable(amount, price, total, process_id);
+
+                this.repo.UpdateSales(process_id, price, amount, total);
                 dgv_sales.Rows[e.RowIndex].Cells[7].Value = total;
                 day_total += total;
                 lbl_day_total.Text = day_total.ToString();
@@ -301,9 +295,6 @@ namespace UserControls
             combo_category_name.Text = e.CategoryName;
             combo_product_name.SelectedValue = e.ProductName;
         }
-
-
-        /////////////////////////////////////////////////////////////////////////////////////
 
     }
 }

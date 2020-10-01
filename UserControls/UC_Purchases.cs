@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 using DataAccessLayer;
+using Repos;
 
 namespace UserControls
 {
     public partial class UC_Purchases : UserControl
     {
-        DBHandler db;
+        private PurchasesRepo repo;
         public UC_Purchases()
         {
             InitializeComponent();
@@ -19,45 +22,35 @@ namespace UserControls
 
         public void Start()
         {
-            if (db == null)
+            if (this.repo == null)
             {
-                db = new DBHandler();
+                this.repo = new PurchasesRepo();
                 dgv_purchases.DoubleBuffered(true);
-
-                
-                combo_category_name.DataSource = DBHelber.Categories();
-
+                combo_category_name.DataSource = this.repo.GetAllCategories();
                 combo_category_name.SelectedIndexChanged += combo_category_name_SelectedIndexChanged;
                 combo_category_name_SelectedIndexChanged(combo_category_name, EventArgs.Empty);
-
                 combo_unit_name.SelectedIndexChanged += combo_unit_name_SelectedIndexChanged;
-
-
-                combo_years.DataSource = DBHelber.GetYears().ColumnToArray(0);
+                this.combo_years.DataSource = this.repo.GetYears().ColumnToArray(0);
             }
         }
 
         private void combo_category_name_SelectedIndexChanged(object sender, EventArgs e)
         {
             lbl_category_id.Text = combo_category_name.SelectedValue.ToString();
-
-            
-            combo_product_name.DataSource = DBHelber.GetCategoryProducts(combo_category_name.SelectedValue.ToString());
+            this.combo_product_name.DataSource = this.repo.GetCategoryProducts(combo_category_name.SelectedValue.ToString());
         }
 
         private void combo_product_name_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbl_product_name_id.Text = combo_product_name.SelectedValue.ToString();
-            GetUintsForProducts();
+            this.lbl_product_name_id.Text = combo_product_name.SelectedValue.ToString();
+            this.GetUintsForProducts();
         }
 
         private void GetUintsForProducts()
         {
-
-            combo_unit_name.DisplayMember = "unit_name";
-            combo_unit_name.ValueMember = "unit_id";
-            combo_unit_name.DataSource = DBHelber.GetProductUnitsInfo(combo_product_name.SelectedValue.ToString());
-
+            this.combo_unit_name.DisplayMember = "unit_name";
+            this.combo_unit_name.ValueMember = "unit_id";
+            this.combo_unit_name.DataSource = this.repo.GetProductUnitsInfo(combo_product_name.SelectedValue.ToString());
         }
 
         private void combo_unit_name_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,7 +85,7 @@ namespace UserControls
                 return;
             }
 
-            combo_years.DataSource = DBHelber.GetYears().ColumnToArray(0);
+            this.combo_years.DataSource = this.repo.GetYears().ColumnToArray(0);
 
             new SettingPrices().ShowDialog(
                 combo_product_name.SelectedValue.ToString(),
@@ -100,37 +93,30 @@ namespace UserControls
                 text_price.Text);
             DateTime date = dateTimePicker1.Value;
 
-            string purchased_query = string.Format(@"INSERT INTO purchases VALUES ( '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}' )",
-                combo_category_name.SelectedValue.ToString(),
-                combo_product_name.SelectedValue.ToString(),
-                combo_unit_name.SelectedValue.ToString(),
-                text_price.Text,
-                text_quantity.Text,
-                lbl_total.Text,
-                date.ToString("yyyy/MM/dd"));
-            db.ExecuteSQL(purchased_query);
+            List<string> purchasedProduct = new List<string>();
+            purchasedProduct.Add(combo_category_name.SelectedValue.ToString());
+            purchasedProduct.Add(combo_product_name.SelectedValue.ToString());
+            purchasedProduct.Add(combo_unit_name.SelectedValue.ToString());
+            purchasedProduct.Add(text_price.Text);
+            purchasedProduct.Add(text_quantity.Text);
+            purchasedProduct.Add(lbl_total.Text);
+            purchasedProduct.Add(date.ToString("yyyy/MM/dd"));
 
+            this.repo.SavePurchasedProduct(purchasedProduct);
 
-            string sql = string.Format(@"INSERT INTO purchases_monthes
-                            SELECT '{0}', '{1}' 
-                            WHERE NOT EXISTS ( SELECT 1 FROM purchases_monthes 
-                            WHERE year = '{0}' AND monthes = '{1}');",
-                                                                    date.Date.ToString("yyyy"),
-                                                                    date.Date.ToString("MM"));
-
-            db.ExecuteSQL(sql);
+            this.repo.UpdateMonthes(date.Date.ToString("yyyy"), date.Date.ToString("MM"));
 
             combo_years_SelectedIndexChanged(combo_years, EventArgs.Empty);
         }
 
         private void combo_years_SelectedIndexChanged(object sender, EventArgs e)
         {
-            combo_monthes.DataSource = DBHelber.GetMonthesOfYear(combo_years.Text).ColumnToArray(0);
+            combo_monthes.DataSource = this.repo.GetMonthesOfYear(combo_years.Text).ColumnToArray(0);
         }
 
         private void combo_monthes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgv_purchases.DataSource = DBHelber.GetPurchases(combo_years.Text, combo_monthes.Text);
+            dgv_purchases.DataSource = this.repo.GetPurchases(combo_years.Text, combo_monthes.Text);
         }
 
         private void dgv_purchases_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -190,6 +190,10 @@
       <Project>{ddf1c044-3d74-4bc0-87ec-a9afabefd0cc}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Repos\Repos.csproj">
+      <Project>{5d43c3b2-6e21-406f-a6a6-f941c38c4798}</Project>
+      <Name>Repos</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
