@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 namespace QueryBuilder
 {
     public enum SordOrder { DESC, ASC }
-    public class Query
+    public class Query : IDisposable
     {
         private string queryString = "";
 
@@ -29,6 +29,12 @@ namespace QueryBuilder
             {
                 return this.queryParams;
             }
+        }
+
+        public void Dispose()
+        {
+            this.QueryString = "";
+            this.QueryParams.Clear();
         }
 
         public Query Select(string columns)
