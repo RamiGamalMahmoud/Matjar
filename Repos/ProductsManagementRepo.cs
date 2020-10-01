@@ -1,0 +1,6 @@
+﻿namespace Repos
+{
+    class ProductsManagementRepo
+    {
+    }
+}
