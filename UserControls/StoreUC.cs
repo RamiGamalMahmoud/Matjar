@@ -1,27 +1,24 @@
 ﻿using DataAccessLayer;
 using System.Windows.Forms;
+using Repos;
 
 
 namespace UserControls
 {
     public partial class StoreUC : UserControl
     {
-        private DBHandler db;
+        private ProductsRepo repo;
         public StoreUC()
         {
             InitializeComponent();
             dgv_store.DoubleBuffered(true);
             dgv_store.AutoGenerateColumns = false;
+            this.repo = new ProductsRepo();
         }
 
         public void Start()
         {
-            if (db == null)
-            {
-                db = new DBHandler();
-
-                dgv_store.DataSource = DBHelber.GetAllProducts("0");
-            }
+            dgv_store.DataSource = this.repo.GetAllProducts();
         }
     }
 }

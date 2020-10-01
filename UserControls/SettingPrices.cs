@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using Repos;
 
 namespace UserControls
 {
     public partial class SettingPrices : Form
     {
+        ProductsRepo repo;
         public SettingPrices()
         {
             InitializeComponent();
+            this.repo = new ProductsRepo();
         }
 
 
@@ -41,23 +44,19 @@ namespace UserControls
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            DataAccessLayer.DBHandler db = new DataAccessLayer.DBHandler();
             DataTable tbl = (DataTable)dgv_product_name_data.DataSource;
             foreach (DataRow row in tbl.Rows)
             {
-                string sql = string.Format("UPDATE products SET selling_price = {1} , purchasing_price = {0}, profit_margin = {2} WHERE product_id = {3} ",
-                    row[3].ToString(),
-                    row[4].ToString(),
-                    row[5].ToString(),
-                    row[0].ToString());
-                db.ExecuteSQL(sql);
+                string[] data = { row[3].ToString(), row[4].ToString(), row[5].ToString() };
+                string productId = row[0].ToString();
+                this.repo.UpdateProduct(data, productId);
             }
-            this.Close();
+            this.Dispose();
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
         private void dgv_product_name_data_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -72,10 +71,6 @@ namespace UserControls
                 tbl.Rows[e.RowIndex]["profit_margin"] = selling_price - purchasing_price;
                 dgv_product_name_data.CellValueChanged += dgv_product_name_data_CellValueChanged;
             }
-        }
-
-        private void dgv_product_name_data_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
     }
 }

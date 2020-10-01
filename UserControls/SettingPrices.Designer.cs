@@ -99,9 +99,8 @@
             this.dgv_product_name_data.RowHeadersWidth = 20;
             this.dgv_product_name_data.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_product_name_data.RowTemplate.Height = 30;
-            this.dgv_product_name_data.Size = new System.Drawing.Size(595, 432);
+            this.dgv_product_name_data.Size = new System.Drawing.Size(591, 428);
             this.dgv_product_name_data.TabIndex = 1;
-            this.dgv_product_name_data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_product_name_data_CellDoubleClick);
             this.dgv_product_name_data.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_product_name_data_CellValueChanged);
             // 
             // product_id
@@ -189,9 +188,9 @@
             this.panel1.Controls.Add(this.btn_save);
             this.panel1.Controls.Add(this.btn_cancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 364);
+            this.panel1.Location = new System.Drawing.Point(0, 360);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(595, 68);
+            this.panel1.Size = new System.Drawing.Size(591, 68);
             this.panel1.TabIndex = 7;
             // 
             // SettingPrices
@@ -200,7 +199,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_cancel;
-            this.ClientSize = new System.Drawing.Size(595, 432);
+            this.ClientSize = new System.Drawing.Size(591, 428);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv_product_name_data);
