@@ -17,8 +17,8 @@ namespace UserControls
 
         public void Start()
         {
-            dgv_store.DataSource = this.repo.GetAllProducts();
             this.repo = new ProductsRepo();
+            dgv_store.DataSource = this.repo.GetAllProducts();
         }
     }
 }

@@ -30,14 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
             this.pnl_controls_home = new System.Windows.Forms.Panel();
-            this.btn_pesticides = new System.Windows.Forms.Button();
-            this.btn_toilet_soap = new System.Windows.Forms.Button();
-            this.btn_other = new System.Windows.Forms.Button();
-            this.btn_fluids = new System.Windows.Forms.Button();
-            this.btn_paperwork = new System.Windows.Forms.Button();
-            this.btn_cosmetics = new System.Windows.Forms.Button();
-            this.btn_normals = new System.Windows.Forms.Button();
-            this.btn_automatics = new System.Windows.Forms.Button();
             this.pnl_pointer = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -56,14 +48,6 @@
             // pnl_controls_home
             // 
             this.pnl_controls_home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pnl_controls_home.Controls.Add(this.btn_pesticides);
-            this.pnl_controls_home.Controls.Add(this.btn_toilet_soap);
-            this.pnl_controls_home.Controls.Add(this.btn_other);
-            this.pnl_controls_home.Controls.Add(this.btn_fluids);
-            this.pnl_controls_home.Controls.Add(this.btn_paperwork);
-            this.pnl_controls_home.Controls.Add(this.btn_cosmetics);
-            this.pnl_controls_home.Controls.Add(this.btn_normals);
-            this.pnl_controls_home.Controls.Add(this.btn_automatics);
             this.pnl_controls_home.Controls.Add(this.pnl_pointer);
             this.pnl_controls_home.Controls.Add(this.label5);
             this.pnl_controls_home.Controls.Add(this.pictureBox1);
@@ -77,134 +61,6 @@
             this.pnl_controls_home.Name = "pnl_controls_home";
             this.pnl_controls_home.Size = new System.Drawing.Size(200, 758);
             this.pnl_controls_home.TabIndex = 0;
-            // 
-            // btn_pesticides
-            // 
-            this.btn_pesticides.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_pesticides.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_pesticides.FlatAppearance.BorderSize = 0;
-            this.btn_pesticides.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pesticides.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pesticides.ForeColor = System.Drawing.Color.White;
-            this.btn_pesticides.Location = new System.Drawing.Point(7, 683);
-            this.btn_pesticides.Name = "btn_pesticides";
-            this.btn_pesticides.Size = new System.Drawing.Size(103, 37);
-            this.btn_pesticides.TabIndex = 32;
-            this.btn_pesticides.Text = "مبيدات";
-            this.btn_pesticides.UseVisualStyleBackColor = false;
-            this.btn_pesticides.Visible = false;
-            // 
-            // btn_toilet_soap
-            // 
-            this.btn_toilet_soap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_toilet_soap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_toilet_soap.FlatAppearance.BorderSize = 0;
-            this.btn_toilet_soap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_toilet_soap.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_toilet_soap.ForeColor = System.Drawing.Color.White;
-            this.btn_toilet_soap.Location = new System.Drawing.Point(7, 597);
-            this.btn_toilet_soap.Name = "btn_toilet_soap";
-            this.btn_toilet_soap.Size = new System.Drawing.Size(103, 37);
-            this.btn_toilet_soap.TabIndex = 33;
-            this.btn_toilet_soap.Text = "صابون تواليت";
-            this.btn_toilet_soap.UseVisualStyleBackColor = false;
-            this.btn_toilet_soap.Visible = false;
-            // 
-            // btn_other
-            // 
-            this.btn_other.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_other.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_other.FlatAppearance.BorderSize = 0;
-            this.btn_other.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_other.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_other.ForeColor = System.Drawing.Color.White;
-            this.btn_other.Location = new System.Drawing.Point(7, 640);
-            this.btn_other.Name = "btn_other";
-            this.btn_other.Size = new System.Drawing.Size(103, 37);
-            this.btn_other.TabIndex = 34;
-            this.btn_other.Text = "اخرى";
-            this.btn_other.UseVisualStyleBackColor = false;
-            this.btn_other.Visible = false;
-            // 
-            // btn_fluids
-            // 
-            this.btn_fluids.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_fluids.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_fluids.FlatAppearance.BorderSize = 0;
-            this.btn_fluids.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_fluids.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_fluids.ForeColor = System.Drawing.Color.White;
-            this.btn_fluids.Location = new System.Drawing.Point(85, 654);
-            this.btn_fluids.Name = "btn_fluids";
-            this.btn_fluids.Size = new System.Drawing.Size(103, 37);
-            this.btn_fluids.TabIndex = 30;
-            this.btn_fluids.Text = "سوائل";
-            this.btn_fluids.UseVisualStyleBackColor = false;
-            this.btn_fluids.Visible = false;
-            // 
-            // btn_paperwork
-            // 
-            this.btn_paperwork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_paperwork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_paperwork.FlatAppearance.BorderSize = 0;
-            this.btn_paperwork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_paperwork.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_paperwork.ForeColor = System.Drawing.Color.White;
-            this.btn_paperwork.Location = new System.Drawing.Point(85, 697);
-            this.btn_paperwork.Name = "btn_paperwork";
-            this.btn_paperwork.Size = new System.Drawing.Size(103, 37);
-            this.btn_paperwork.TabIndex = 31;
-            this.btn_paperwork.Text = "ورقيات";
-            this.btn_paperwork.UseVisualStyleBackColor = false;
-            this.btn_paperwork.Visible = false;
-            // 
-            // btn_cosmetics
-            // 
-            this.btn_cosmetics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_cosmetics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_cosmetics.FlatAppearance.BorderSize = 0;
-            this.btn_cosmetics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cosmetics.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cosmetics.ForeColor = System.Drawing.Color.White;
-            this.btn_cosmetics.Location = new System.Drawing.Point(91, 611);
-            this.btn_cosmetics.Name = "btn_cosmetics";
-            this.btn_cosmetics.Size = new System.Drawing.Size(103, 37);
-            this.btn_cosmetics.TabIndex = 29;
-            this.btn_cosmetics.Text = "مستحضرات";
-            this.btn_cosmetics.UseVisualStyleBackColor = false;
-            this.btn_cosmetics.Visible = false;
-            // 
-            // btn_normals
-            // 
-            this.btn_normals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_normals.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_normals.FlatAppearance.BorderSize = 0;
-            this.btn_normals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_normals.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_normals.ForeColor = System.Drawing.Color.White;
-            this.btn_normals.Location = new System.Drawing.Point(85, 525);
-            this.btn_normals.Name = "btn_normals";
-            this.btn_normals.Size = new System.Drawing.Size(103, 37);
-            this.btn_normals.TabIndex = 27;
-            this.btn_normals.Text = "مساحيق عادية";
-            this.btn_normals.UseVisualStyleBackColor = false;
-            this.btn_normals.Visible = false;
-            // 
-            // btn_automatics
-            // 
-            this.btn_automatics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_automatics.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btn_automatics.FlatAppearance.BorderSize = 0;
-            this.btn_automatics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_automatics.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_automatics.ForeColor = System.Drawing.Color.White;
-            this.btn_automatics.Location = new System.Drawing.Point(85, 568);
-            this.btn_automatics.Name = "btn_automatics";
-            this.btn_automatics.Size = new System.Drawing.Size(103, 37);
-            this.btn_automatics.TabIndex = 28;
-            this.btn_automatics.Text = "مساحيق اتوماتيك";
-            this.btn_automatics.UseVisualStyleBackColor = false;
-            this.btn_automatics.Visible = false;
             // 
             // pnl_pointer
             // 
@@ -394,13 +250,5 @@
         private UserControls.UC_Sales uC_Sales1;
         private UserControls.UC_Purchases uC_Purchases1;
         private UserControls.StoreUC storeUC1;
-        private System.Windows.Forms.Button btn_cosmetics;
-        private System.Windows.Forms.Button btn_normals;
-        private System.Windows.Forms.Button btn_automatics;
-        private System.Windows.Forms.Button btn_fluids;
-        private System.Windows.Forms.Button btn_paperwork;
-        private System.Windows.Forms.Button btn_pesticides;
-        private System.Windows.Forms.Button btn_toilet_soap;
-        private System.Windows.Forms.Button btn_other;
     }
 }
