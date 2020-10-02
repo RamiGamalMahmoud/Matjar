@@ -10,15 +10,15 @@ namespace UserControls
         private ProductsRepo repo;
         public StoreUC()
         {
-            InitializeComponent();
-            dgv_store.DoubleBuffered(true);
-            dgv_store.AutoGenerateColumns = false;
+            this.InitializeComponent();
+            this.dgv_store.DoubleBuffered(true);
+            this.dgv_store.AutoGenerateColumns = false;
         }
 
         public void Start()
         {
             this.repo = new ProductsRepo();
-            dgv_store.DataSource = this.repo.GetAllProducts();
+            this.dgv_store.DataSource = this.repo.GetAllProducts();
         }
     }
 }

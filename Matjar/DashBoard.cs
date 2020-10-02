@@ -7,62 +7,61 @@ namespace Matjar
     public partial class DashBoard : Form
     {
         private Button[] buttons;
-        private Color BaseColor = Color.FromArgb(54, 79, 107);
-        private Color ActiveColor = Color.FromArgb(67, 221, 230);
 
         public DashBoard()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void DashBoard_Load(object sender, EventArgs e)
         {
-            this.buttons = new Button[] { btn_statistics, btn_goods, btn_purchases, btn_daly_sales, btn_new_product };
-            //btn_daly_sales.PerformClick();
-            btn_purchases.PerformClick();
+            this.buttons = new Button[] { this.btn_statistics, this.btn_goods, this.btn_purchases, this.btn_daly_sales, this.btn_new_product };
+            //this.btn_daly_sales.PerformClick();
+            this.btn_purchases.PerformClick();
         }
 
         private void SetActiveButton(Button activeButton)
         {
-            foreach(Button btn in this.buttons)
+            foreach (Button btn in this.buttons)
             {
-                btn.BackColor = this.BaseColor;
+                Console.WriteLine(Properties.Settings.Default["BaseColor"]);
+                btn.BackColor = (Color)Properties.Settings.Default["BaseColor"];
                 btn.ForeColor = Color.White;
             }
 
-            activeButton.BackColor = this.ActiveColor;
-            activeButton.ForeColor = this.BaseColor;
+            activeButton.BackColor = (Color)Properties.Settings.Default["ActiveButtonBackColor"];
+            activeButton.ForeColor = (Color)Properties.Settings.Default["BaseColor"];
         }
 
         private void btn_goods_Click(object sender, EventArgs e)
         {
-            SetActiveButton((Button)sender);
-            storeUC1.BringToFront();
-            storeUC1.Start();
+            this.SetActiveButton((Button)sender);
+            this.storeUC1.BringToFront();
+            this.storeUC1.Start();
         }
         private void btn_daly_sales_Click(object sender, EventArgs e)
         {
-            SetActiveButton((Button)sender);
-            uC_Sales1.BringToFront();
-            uC_Sales1.Start();
+            this.SetActiveButton((Button)sender);
+            this.uC_Sales1.BringToFront();
+            this.uC_Sales1.Start();
         }
 
         private void btn_purchases_Click(object sender, EventArgs e)
         {
-            SetActiveButton((Button)sender);
-            uC_Purchases1.BringToFront();
-            uC_Purchases1.Start();
+            this.SetActiveButton((Button)sender);
+            this.uC_Purchases1.BringToFront();
+            this.uC_Purchases1.Start();
         }
 
         private void btn_statistics_Click(object sender, EventArgs e)
         {
-            SetActiveButton((Button)sender);
+            this.SetActiveButton((Button)sender);
             new FormManagement().ShowDialog();
         }
 
         private void btn_new_product_Click(object sender, EventArgs e)
         {
-            SetActiveButton((Button)sender);
+            this.SetActiveButton((Button)sender);
             new AddUpdateProductForm().Show();
         }
     }
