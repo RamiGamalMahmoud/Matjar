@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_existing_products = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +46,6 @@
             this.profit_margin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_add_product_main = new System.Windows.Forms.Panel();
             this.pnl_add_product_controls = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
             this.btn_add_new_product_name = new System.Windows.Forms.Button();
             this.btn_new_product_save = new System.Windows.Forms.Button();
@@ -78,7 +77,6 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pnl_info_controls = new System.Windows.Forms.Panel();
-            this.combo_existed_products_names_2 = new System.Windows.Forms.ComboBox();
             this.btn_info_save = new System.Windows.Forms.Button();
             this.text_contents_amount = new System.Windows.Forms.TextBox();
             this.btn_edit = new System.Windows.Forms.Button();
@@ -107,14 +105,14 @@
             this.dgv_existing_products.BackgroundColor = System.Drawing.Color.White;
             this.dgv_existing_products.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_existing_products.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_existing_products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(221)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_existing_products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
             this.dgv_existing_products.ColumnHeadersHeight = 40;
             this.dgv_existing_products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv_existing_products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -124,27 +122,27 @@
             this.purchasing_price,
             this.selling_price,
             this.profit_margin});
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.PaleGreen;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_existing_products.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(81)))), ((int)(((byte)(133)))));
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_existing_products.DefaultCellStyle = dataGridViewCellStyle50;
             this.dgv_existing_products.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_existing_products.EnableHeadersVisualStyles = false;
             this.dgv_existing_products.Location = new System.Drawing.Point(0, 145);
             this.dgv_existing_products.Name = "dgv_existing_products";
             this.dgv_existing_products.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_existing_products.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(221)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_existing_products.RowHeadersDefaultCellStyle = dataGridViewCellStyle51;
             this.dgv_existing_products.RowHeadersWidth = 30;
             this.dgv_existing_products.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_existing_products.RowTemplate.Height = 30;
@@ -175,9 +173,9 @@
             // purchasing_price
             // 
             this.purchasing_price.DataPropertyName = "purchasing_price";
-            dataGridViewCellStyle29.Format = "N2";
-            dataGridViewCellStyle29.NullValue = null;
-            this.purchasing_price.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle47.Format = "N2";
+            dataGridViewCellStyle47.NullValue = null;
+            this.purchasing_price.DefaultCellStyle = dataGridViewCellStyle47;
             this.purchasing_price.HeaderText = "سعر الشراء";
             this.purchasing_price.Name = "purchasing_price";
             this.purchasing_price.ReadOnly = true;
@@ -185,8 +183,8 @@
             // selling_price
             // 
             this.selling_price.DataPropertyName = "selling_price";
-            dataGridViewCellStyle30.Format = "N2";
-            this.selling_price.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle48.Format = "N2";
+            this.selling_price.DefaultCellStyle = dataGridViewCellStyle48;
             this.selling_price.HeaderText = "سعر البيع";
             this.selling_price.Name = "selling_price";
             this.selling_price.ReadOnly = true;
@@ -194,8 +192,8 @@
             // profit_margin
             // 
             this.profit_margin.DataPropertyName = "profit_margin";
-            dataGridViewCellStyle31.Format = "N2";
-            this.profit_margin.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle49.Format = "N2";
+            this.profit_margin.DefaultCellStyle = dataGridViewCellStyle49;
             this.profit_margin.HeaderText = "هامش الربح";
             this.profit_margin.Name = "profit_margin";
             this.profit_margin.ReadOnly = true;
@@ -212,7 +210,7 @@
             // 
             // pnl_add_product_controls
             // 
-            this.pnl_add_product_controls.Controls.Add(this.button1);
+            this.pnl_add_product_controls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnl_add_product_controls.Controls.Add(this.btn_back);
             this.pnl_add_product_controls.Controls.Add(this.btn_add_new_product_name);
             this.pnl_add_product_controls.Controls.Add(this.btn_new_product_save);
@@ -238,26 +236,18 @@
             this.pnl_add_product_controls.Size = new System.Drawing.Size(588, 145);
             this.pnl_add_product_controls.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(10, 68);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 23);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btn_back
             // 
             this.btn_back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.btn_back.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_back.FlatAppearance.BorderSize = 0;
             this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_back.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_back.ForeColor = System.Drawing.Color.White;
             this.btn_back.Location = new System.Drawing.Point(10, 30);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(53, 27);
+            this.btn_back.Size = new System.Drawing.Size(53, 30);
             this.btn_back.TabIndex = 41;
             this.btn_back.Text = "رجوع";
             this.btn_back.UseVisualStyleBackColor = false;
@@ -267,14 +257,15 @@
             // btn_add_new_product_name
             // 
             this.btn_add_new_product_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_add_new_product_name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_add_new_product_name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btn_add_new_product_name.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_add_new_product_name.FlatAppearance.BorderSize = 0;
             this.btn_add_new_product_name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add_new_product_name.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add_new_product_name.ForeColor = System.Drawing.Color.Transparent;
             this.btn_add_new_product_name.Location = new System.Drawing.Point(64, 30);
             this.btn_add_new_product_name.Name = "btn_add_new_product_name";
-            this.btn_add_new_product_name.Size = new System.Drawing.Size(125, 27);
+            this.btn_add_new_product_name.Size = new System.Drawing.Size(125, 30);
             this.btn_add_new_product_name.TabIndex = 41;
             this.btn_add_new_product_name.Text = "اضافة صنف جديد";
             this.btn_add_new_product_name.UseVisualStyleBackColor = false;
@@ -283,18 +274,18 @@
             // btn_new_product_save
             // 
             this.btn_new_product_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_new_product_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_new_product_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btn_new_product_save.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_new_product_save.FlatAppearance.BorderSize = 0;
             this.btn_new_product_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_new_product_save.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_new_product_save.ForeColor = System.Drawing.Color.Transparent;
             this.btn_new_product_save.Location = new System.Drawing.Point(35, 96);
             this.btn_new_product_save.Name = "btn_new_product_save";
-            this.btn_new_product_save.Size = new System.Drawing.Size(60, 33);
+            this.btn_new_product_save.Size = new System.Drawing.Size(60, 30);
             this.btn_new_product_save.TabIndex = 7;
             this.btn_new_product_save.Text = "حفظ";
             this.btn_new_product_save.UseVisualStyleBackColor = false;
-            this.btn_new_product_save.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbl_add_new_product_name
             // 
@@ -312,23 +303,26 @@
             // combo_existed_products_names
             // 
             this.combo_existed_products_names.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.combo_existed_products_names.BackColor = System.Drawing.Color.White;
             this.combo_existed_products_names.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_existed_products_names.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_existed_products_names.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_existed_products_names.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
             this.combo_existed_products_names.FormattingEnabled = true;
-            this.combo_existed_products_names.Location = new System.Drawing.Point(195, 30);
+            this.combo_existed_products_names.Location = new System.Drawing.Point(196, 30);
             this.combo_existed_products_names.Name = "combo_existed_products_names";
             this.combo_existed_products_names.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.combo_existed_products_names.Size = new System.Drawing.Size(231, 30);
+            this.combo_existed_products_names.Size = new System.Drawing.Size(230, 30);
             this.combo_existed_products_names.TabIndex = 1;
             // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(195, 7);
+            this.label10.Location = new System.Drawing.Point(196, 7);
             this.label10.Name = "label10";
             this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label10.Size = new System.Drawing.Size(231, 15);
+            this.label10.Size = new System.Drawing.Size(230, 15);
             this.label10.TabIndex = 38;
             this.label10.Text = "الاصناف الموجودة";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -336,8 +330,11 @@
             // combo_categories
             // 
             this.combo_categories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.combo_categories.BackColor = System.Drawing.Color.White;
             this.combo_categories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_categories.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_categories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
             this.combo_categories.FormattingEnabled = true;
             this.combo_categories.Location = new System.Drawing.Point(432, 30);
             this.combo_categories.Name = "combo_categories";
@@ -376,11 +373,11 @@
             this.text_amount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.text_amount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.text_amount.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.text_amount.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_amount.Location = new System.Drawing.Point(365, 97);
+            this.text_amount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_amount.Location = new System.Drawing.Point(365, 99);
             this.text_amount.Name = "text_amount";
             this.text_amount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.text_amount.Size = new System.Drawing.Size(81, 32);
+            this.text_amount.Size = new System.Drawing.Size(81, 26);
             this.text_amount.TabIndex = 3;
             this.text_amount.Text = "0.0";
             this.text_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -392,11 +389,11 @@
             this.text_profit_margin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.text_profit_margin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.text_profit_margin.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.text_profit_margin.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_profit_margin.Location = new System.Drawing.Point(105, 97);
+            this.text_profit_margin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_profit_margin.Location = new System.Drawing.Point(105, 99);
             this.text_profit_margin.Name = "text_profit_margin";
             this.text_profit_margin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.text_profit_margin.Size = new System.Drawing.Size(81, 32);
+            this.text_profit_margin.Size = new System.Drawing.Size(81, 26);
             this.text_profit_margin.TabIndex = 6;
             this.text_profit_margin.Text = "0.0";
             this.text_profit_margin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -408,11 +405,11 @@
             this.text_selling_price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.text_selling_price.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.text_selling_price.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.text_selling_price.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_selling_price.Location = new System.Drawing.Point(192, 97);
+            this.text_selling_price.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_selling_price.Location = new System.Drawing.Point(192, 99);
             this.text_selling_price.Name = "text_selling_price";
             this.text_selling_price.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.text_selling_price.Size = new System.Drawing.Size(81, 32);
+            this.text_selling_price.Size = new System.Drawing.Size(81, 26);
             this.text_selling_price.TabIndex = 5;
             this.text_selling_price.Text = "0.0";
             this.text_selling_price.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -425,11 +422,11 @@
             this.text_purchasing_price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.text_purchasing_price.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.text_purchasing_price.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.text_purchasing_price.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_purchasing_price.Location = new System.Drawing.Point(278, 97);
+            this.text_purchasing_price.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_purchasing_price.Location = new System.Drawing.Point(278, 99);
             this.text_purchasing_price.Name = "text_purchasing_price";
             this.text_purchasing_price.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.text_purchasing_price.Size = new System.Drawing.Size(81, 32);
+            this.text_purchasing_price.Size = new System.Drawing.Size(81, 26);
             this.text_purchasing_price.TabIndex = 4;
             this.text_purchasing_price.Text = "0.0";
             this.text_purchasing_price.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -440,8 +437,11 @@
             // combo_units
             // 
             this.combo_units.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.combo_units.BackColor = System.Drawing.Color.White;
             this.combo_units.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_units.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_units.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_units.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
             this.combo_units.FormattingEnabled = true;
             this.combo_units.Location = new System.Drawing.Point(458, 96);
             this.combo_units.Name = "combo_units";
@@ -530,14 +530,14 @@
             this.dgv_info.BackgroundColor = System.Drawing.Color.White;
             this.dgv_info.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_info.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(221)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle52;
             this.dgv_info.ColumnHeadersHeight = 40;
             this.dgv_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv_info.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -548,31 +548,31 @@
             this.sub_unit_id,
             this.sub_unit_count,
             this.sub_unit_is_purchaseable});
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.PaleGreen;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_info.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle53.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(81)))), ((int)(((byte)(133)))));
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_info.DefaultCellStyle = dataGridViewCellStyle53;
             this.dgv_info.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_info.EnableHeadersVisualStyles = false;
-            this.dgv_info.Location = new System.Drawing.Point(30, 127);
+            this.dgv_info.Location = new System.Drawing.Point(50, 127);
             this.dgv_info.Name = "dgv_info";
             this.dgv_info.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("Tahoma", 8F);
-            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_info.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Tahoma", 8F);
+            dataGridViewCellStyle54.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(221)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_info.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
             this.dgv_info.RowHeadersWidth = 30;
             this.dgv_info.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_info.RowTemplate.Height = 30;
-            this.dgv_info.Size = new System.Drawing.Size(521, 248);
+            this.dgv_info.Size = new System.Drawing.Size(482, 248);
             this.dgv_info.TabIndex = 0;
             this.dgv_info.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_info_RowHeaderMouseDoubleClick);
             // 
@@ -634,23 +634,25 @@
             // 
             // panel7
             // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel7.Location = new System.Drawing.Point(0, 127);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(30, 248);
+            this.panel7.Size = new System.Drawing.Size(50, 248);
             this.panel7.TabIndex = 2;
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(551, 127);
+            this.panel6.Location = new System.Drawing.Point(532, 127);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(37, 248);
+            this.panel6.Size = new System.Drawing.Size(56, 248);
             this.panel6.TabIndex = 1;
             // 
             // pnl_info_controls
             // 
-            this.pnl_info_controls.Controls.Add(this.combo_existed_products_names_2);
+            this.pnl_info_controls.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnl_info_controls.Controls.Add(this.btn_info_save);
             this.pnl_info_controls.Controls.Add(this.text_contents_amount);
             this.pnl_info_controls.Controls.Add(this.btn_edit);
@@ -668,33 +670,21 @@
             this.pnl_info_controls.Size = new System.Drawing.Size(588, 127);
             this.pnl_info_controls.TabIndex = 0;
             // 
-            // combo_existed_products_names_2
-            // 
-            this.combo_existed_products_names_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.combo_existed_products_names_2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combo_existed_products_names_2.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combo_existed_products_names_2.FormattingEnabled = true;
-            this.combo_existed_products_names_2.Location = new System.Drawing.Point(289, 79);
-            this.combo_existed_products_names_2.Name = "combo_existed_products_names_2";
-            this.combo_existed_products_names_2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.combo_existed_products_names_2.Size = new System.Drawing.Size(256, 30);
-            this.combo_existed_products_names_2.TabIndex = 0;
-            // 
             // btn_info_save
             // 
             this.btn_info_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_info_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_info_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btn_info_save.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_info_save.FlatAppearance.BorderSize = 0;
             this.btn_info_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_info_save.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_info_save.ForeColor = System.Drawing.Color.Transparent;
-            this.btn_info_save.Location = new System.Drawing.Point(196, 75);
+            this.btn_info_save.Location = new System.Drawing.Point(294, 83);
             this.btn_info_save.Name = "btn_info_save";
-            this.btn_info_save.Size = new System.Drawing.Size(60, 40);
+            this.btn_info_save.Size = new System.Drawing.Size(60, 30);
             this.btn_info_save.TabIndex = 5;
             this.btn_info_save.Text = "حفظ";
             this.btn_info_save.UseVisualStyleBackColor = false;
-            this.btn_info_save.Click += new System.EventHandler(this.btn_info_save_Click);
             // 
             // text_contents_amount
             // 
@@ -714,14 +704,15 @@
             // btn_edit
             // 
             this.btn_edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_edit.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btn_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
+            this.btn_edit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_edit.FlatAppearance.BorderSize = 0;
             this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_edit.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_edit.ForeColor = System.Drawing.Color.Black;
-            this.btn_edit.Location = new System.Drawing.Point(130, 75);
+            this.btn_edit.Location = new System.Drawing.Point(228, 83);
             this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(60, 40);
+            this.btn_edit.Size = new System.Drawing.Size(60, 30);
             this.btn_edit.TabIndex = 6;
             this.btn_edit.Text = "تعديل";
             this.btn_edit.UseVisualStyleBackColor = false;
@@ -729,8 +720,11 @@
             // combo_is_purchaseable
             // 
             this.combo_is_purchaseable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.combo_is_purchaseable.BackColor = System.Drawing.Color.White;
             this.combo_is_purchaseable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_is_purchaseable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_is_purchaseable.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_is_purchaseable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
             this.combo_is_purchaseable.FormattingEnabled = true;
             this.combo_is_purchaseable.Items.AddRange(new object[] {
             "نعم",
@@ -744,8 +738,11 @@
             // combo_sub_units
             // 
             this.combo_sub_units.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.combo_sub_units.BackColor = System.Drawing.Color.White;
             this.combo_sub_units.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_sub_units.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_sub_units.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_sub_units.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
             this.combo_sub_units.FormattingEnabled = true;
             this.combo_sub_units.Location = new System.Drawing.Point(289, 38);
             this.combo_sub_units.Name = "combo_sub_units";
@@ -756,8 +753,11 @@
             // combo_base_units
             // 
             this.combo_base_units.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.combo_base_units.BackColor = System.Drawing.Color.White;
             this.combo_base_units.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_base_units.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_base_units.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_base_units.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
             this.combo_base_units.FormattingEnabled = true;
             this.combo_base_units.Location = new System.Drawing.Point(420, 38);
             this.combo_base_units.Name = "combo_base_units";
@@ -794,10 +794,10 @@
             this.lbl_info_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_info_id.BackColor = System.Drawing.SystemColors.ControlDark;
             this.lbl_info_id.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_info_id.Location = new System.Drawing.Point(59, 79);
+            this.lbl_info_id.Location = new System.Drawing.Point(10, 39);
             this.lbl_info_id.Name = "lbl_info_id";
             this.lbl_info_id.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lbl_info_id.Size = new System.Drawing.Size(43, 32);
+            this.lbl_info_id.Size = new System.Drawing.Size(18, 23);
             this.lbl_info_id.TabIndex = 32;
             this.lbl_info_id.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -860,8 +860,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnl_info_main;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel pnl_info_controls;
         private System.Windows.Forms.DataGridView dgv_info;
         private System.Windows.Forms.DataGridViewTextBoxColumn info_id;
@@ -887,7 +885,6 @@
         private System.Windows.Forms.Label lbl_info_id;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox combo_existed_products_names_2;
         private System.Windows.Forms.Button btn_add_new_product_name;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btn_info_save;
@@ -899,6 +896,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn purchasing_price;
         private System.Windows.Forms.DataGridViewTextBoxColumn selling_price;
         private System.Windows.Forms.DataGridViewTextBoxColumn profit_margin;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
     }
 }
