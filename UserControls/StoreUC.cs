@@ -13,12 +13,12 @@ namespace UserControls
             InitializeComponent();
             dgv_store.DoubleBuffered(true);
             dgv_store.AutoGenerateColumns = false;
-            this.repo = new ProductsRepo();
         }
 
         public void Start()
         {
             dgv_store.DataSource = this.repo.GetAllProducts();
+            this.repo = new ProductsRepo();
         }
     }
 }

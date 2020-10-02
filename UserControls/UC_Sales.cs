@@ -10,7 +10,7 @@ namespace UserControls
 {
     public partial class UC_Sales : UserControl
     {
-        private SalesRepo repo { get; } = new SalesRepo();
+        private SalesRepo repo;
         public int LastSerial { get; set; }
         public string WorkDay { get; set; }
         public string NextProcessId { get; set; }
@@ -41,6 +41,7 @@ namespace UserControls
         public void Start()
         {
             dgv_sales.DoubleBuffered(true);
+            this.repo = new SalesRepo();
 
             lbl_work_day.Text = date_picker_work_day.Value.ToString("ddd") + " " + date_picker_work_day.Value.ToString("yyyy/M/d");
             WorkDay = date_picker_work_day.Value.ToString("yyyyMMdd");
