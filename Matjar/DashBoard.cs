@@ -16,8 +16,8 @@ namespace Matjar
         private void DashBoard_Load(object sender, EventArgs e)
         {
             this.buttons = new Button[] { this.btn_statistics, this.btn_goods, this.btn_purchases, this.btn_daly_sales, this.btn_new_product };
-            //this.btn_daly_sales.PerformClick();
-            this.btn_purchases.PerformClick();
+            this.btn_daly_sales.PerformClick();
+            //this.btn_purchases.PerformClick();
         }
 
         private void SetActiveButton(Button activeButton)
@@ -51,12 +51,6 @@ namespace Matjar
             this.SetActiveButton((Button)sender);
             this.uC_Purchases1.BringToFront();
             this.uC_Purchases1.Start();
-        }
-
-        private void btn_statistics_Click(object sender, EventArgs e)
-        {
-            this.SetActiveButton((Button)sender);
-            new FormManagement().ShowDialog();
         }
 
         private void btn_new_product_Click(object sender, EventArgs e)

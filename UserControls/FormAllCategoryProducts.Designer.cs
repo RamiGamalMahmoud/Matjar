@@ -60,9 +60,9 @@
             this.text_amount = new System.Windows.Forms.TextBox();
             this.text_search = new System.Windows.Forms.TextBox();
             this.combo_category = new System.Windows.Forms.ComboBox();
-            this.bth_exit = new GControls.GButton();
+            this.bth_exit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gButton1 = new GControls.GButton();
+            this.gButton1 = new System.Windows.Forms.Button();
             this.lbl_total_label = new System.Windows.Forms.Label();
             this.lbl_total = new System.Windows.Forms.Label();
             this.pnl_bell = new System.Windows.Forms.Panel();
@@ -670,7 +670,7 @@
 
         private System.Windows.Forms.Panel pnl_all_products;
         private System.Windows.Forms.DataGridView dgv_all_products;
-        private GControls.GButton bth_exit;
+        private System.Windows.Forms.Button bth_exit;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox combo_category;
@@ -682,7 +682,7 @@
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Panel pnl_bell;
         private System.Windows.Forms.DataGridView dgv_bill;
-        private GControls.GButton gButton1;
+        private System.Windows.Forms.Button gButton1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmn_category_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_name;

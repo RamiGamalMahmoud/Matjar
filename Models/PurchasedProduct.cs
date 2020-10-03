@@ -27,13 +27,13 @@ namespace Models
             set
             {
                 this.unit_id = value;
-                GetAllProductData();
+                this.GetAllProductData();
             }
         }
         public string UnitName
         {
-            get { return unit_name; }
-            set { unit_name = value; }
+            get { return this.unit_name; }
+            set { this.unit_name = value; }
         }
         public double PurchasingPrice
         {

@@ -13,10 +13,10 @@ namespace Matjar
 
         public AddUpdateProductForm()
         {
-            InitializeComponent();
-            CategoriesTable = db.ExecuteSQL("SELECT id, category FROM categories");
-            UnitsTable = db.ExecuteSQL("SELECT id, unit FROM units ORDER BY unit");
-            uC_Add_Product_Full1.Start(CategoriesTable, UnitsTable);
+            this.InitializeComponent();
+            this.CategoriesTable = this.db.ExecuteSQL("SELECT id, category FROM categories");
+            this.UnitsTable = this.db.ExecuteSQL("SELECT id, unit FROM units ORDER BY unit");
+            this.uC_Add_Product_Full1.Start(this.CategoriesTable, this.UnitsTable);
         }
 
     }

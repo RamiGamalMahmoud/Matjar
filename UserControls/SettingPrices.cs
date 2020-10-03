@@ -11,7 +11,7 @@ namespace UserControls
         ProductsRepo repo;
         public SettingPrices()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.repo = new ProductsRepo();
         }
 
@@ -19,7 +19,7 @@ namespace UserControls
         public virtual void ShowDialog(string product_name_id, string purchasing_unit_id, string purchasing_price)
         {
             Models.PurchasingProcess.ParseUnits(product_name_id, purchasing_unit_id, purchasing_price);
-            dgv_product_name_data.DataSource = CreateProductIfoDataTable();
+            this.dgv_product_name_data.DataSource = this.CreateProductIfoDataTable();
             this.ShowDialog();
         }
 
@@ -44,7 +44,7 @@ namespace UserControls
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            DataTable tbl = (DataTable)dgv_product_name_data.DataSource;
+            DataTable tbl = (DataTable)this.dgv_product_name_data.DataSource;
             foreach (DataRow row in tbl.Rows)
             {
                 string[] data = { row[3].ToString(), row[4].ToString(), row[5].ToString() };
@@ -60,16 +60,16 @@ namespace UserControls
         }
         private void dgv_product_name_data_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable tbl = (DataTable)dgv_product_name_data.DataSource;
+            DataTable tbl = (DataTable)this.dgv_product_name_data.DataSource;
             if (tbl != null)
             {
-                dgv_product_name_data.CellValueChanged -= dgv_product_name_data_CellValueChanged;
+                this.dgv_product_name_data.CellValueChanged -= this.dgv_product_name_data_CellValueChanged;
                 double purchasing_price, selling_price;
-                double.TryParse(dgv_product_name_data.Rows[e.RowIndex].Cells["purchasing_price"].Value.ToString(), out purchasing_price);
-                double.TryParse(dgv_product_name_data.Rows[e.RowIndex].Cells["selling_price"].Value.ToString(), out selling_price);
+                double.TryParse(this.dgv_product_name_data.Rows[e.RowIndex].Cells["purchasing_price"].Value.ToString(), out purchasing_price);
+                double.TryParse(this.dgv_product_name_data.Rows[e.RowIndex].Cells["selling_price"].Value.ToString(), out selling_price);
 
                 tbl.Rows[e.RowIndex]["profit_margin"] = selling_price - purchasing_price;
-                dgv_product_name_data.CellValueChanged += dgv_product_name_data_CellValueChanged;
+                this.dgv_product_name_data.CellValueChanged += this.dgv_product_name_data_CellValueChanged;
             }
         }
     }

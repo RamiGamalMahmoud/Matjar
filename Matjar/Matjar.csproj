@@ -96,12 +96,6 @@
     <Compile Include="DashBoard.Designer.cs">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormManagement.Designer.cs">
-      <DependentUpon>FormManagement.cs</DependentUpon>
-    </Compile>
     <Compile Include="MyExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,9 +104,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormManagement.resx">
-      <DependentUpon>FormManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -148,17 +139,9 @@
       <Project>{665d6dd6-40ed-45c1-a76b-255cf576e733}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GControls\GControls.csproj">
-      <Project>{B25EEE95-3CEA-4520-9573-C8C2BE7E810B}</Project>
-      <Name>GControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{ddf1c044-3d74-4bc0-87ec-a9afabefd0cc}</Project>
       <Name>Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Query\Query.csproj">
-      <Project>{f7c52230-73a5-40c3-b371-f478b087c961}</Project>
-      <Name>Query</Name>
     </ProjectReference>
     <ProjectReference Include="..\UserControls\UserControls.csproj">
       <Project>{69c159ae-e353-4079-a4b2-2b61f9b66176}</Project>
@@ -185,9 +168,6 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_17_Store_1871436.png" />
     <None Include="bin\Debug\iconfinder___shopping_shop_store_bag_3668838.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="iconfinder_17_Store_1871436.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net45\System.Data.SQLite.Core.targets')" />

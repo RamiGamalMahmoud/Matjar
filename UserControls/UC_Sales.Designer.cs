@@ -65,7 +65,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_product_id = new System.Windows.Forms.Label();
             this.lbl_category_id = new System.Windows.Forms.Label();
-            this.gbtn_view_products = new GControls.GButton();
+            this.gbtn_view_products = new System.Windows.Forms.Button();
             this.combo_category_name = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.date_picker_work_day = new System.Windows.Forms.DateTimePicker();
@@ -614,7 +614,7 @@
         private System.Windows.Forms.Label lbl_clock;
         private System.Windows.Forms.DateTimePicker date_picker_work_day;
         private System.Windows.Forms.Label lbl_work_day;
-        private GControls.GButton gbtn_view_products;
+        private System.Windows.Forms.Button gbtn_view_products;
         private System.Windows.Forms.ComboBox combo_category_name;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_product_id;

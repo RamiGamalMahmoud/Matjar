@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using Models;
+﻿using System.Collections.Generic;
 
 namespace Models
 {
@@ -20,11 +15,11 @@ namespace Models
             set
             {
                 this.product_id = value;
-                if (db == null)
+                if (this.db == null)
                 {
-                    db = new DataAccessLayer.DBHandler();
+                    this.db = new DataAccessLayer.DBHandler();
                 }
-                getProductData();
+                this.getProductData();
 
             }
         }
@@ -48,7 +43,7 @@ namespace Models
         {
             double amount, selling_price, purchaning_price, profit_margin;
             Dictionary<string, string> product_data;
-            product_data = db.getProductData(this.product_id);
+            product_data = this.db.getProductData(this.product_id);
 
             // Database properites
             this.product_name_id = int.Parse(product_data["product_name_id"]);

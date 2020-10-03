@@ -42,5 +42,29 @@ namespace Repos
                 return this.conn.GetAll(query.QueryString);
             }
         }
+
+        public DataTable GetCategoryProducts(string categoryId)
+        {
+            using (Query query = new Query())
+            {
+                query.Select("category_id, category AS category_name, product_id, product_name, unit AS unit_name, unit_id, selling_price, amount")
+                    .From("products_data_view")
+                    .Where("category_id", "=", categoryId)
+                    .OrderBy("product_name", SordOrder.ASC);
+                return this.conn.GetAll(query.QueryString, query.QueryParams);
+            }
+        }
+
+        public DataTable GetProductsByName(string name)
+        {
+            using (Query query = new Query())
+            {
+                query.Select("category_id, category AS category_name, product_id, product_name, unit AS unit_name, unit_id, selling_price, amount")
+                    .From("products_data_view")
+                    .Where("product_name", "like", $"%{name}%")
+                    .OrderBy("product_name", SordOrder.ASC);
+                return this.conn.GetAll(query.QueryString, query.QueryParams);
+            }
+        }
     }
 }

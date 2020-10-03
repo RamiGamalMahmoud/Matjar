@@ -87,30 +87,6 @@
     <Compile Include="UC_Add_Product_Full.Designer.cs">
       <DependentUpon>UC_Add_Product_Full.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_NewCategory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_NewCategory.Designer.cs">
-      <DependentUpon>UC_NewCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_NewProduct.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_NewProduct.Designer.cs">
-      <DependentUpon>UC_NewProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_NewProduct_Name.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_NewProduct_Name.Designer.cs">
-      <DependentUpon>UC_NewProduct_Name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_NewUnit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_NewUnit.Designer.cs">
-      <DependentUpon>UC_NewUnit.cs</DependentUpon>
-    </Compile>
     <Compile Include="UC_Purchases.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,18 +98,6 @@
     </Compile>
     <Compile Include="UC_Sales.Designer.cs">
       <DependentUpon>UC_Sales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_SearchTable.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_SearchTable.Designer.cs">
-      <DependentUpon>UC_SearchTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_UpdateUnitsContentsInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_UpdateUnitsContentsInfo.Designer.cs">
-      <DependentUpon>UC_UpdateUnitsContentsInfo.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -156,36 +120,14 @@
     <EmbeddedResource Include="UC_Add_Product_Full.resx">
       <DependentUpon>UC_Add_Product_Full.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_NewCategory.resx">
-      <DependentUpon>UC_NewCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_NewProduct.resx">
-      <DependentUpon>UC_NewProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_NewProduct_Name.resx">
-      <DependentUpon>UC_NewProduct_Name.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_NewUnit.resx">
-      <DependentUpon>UC_NewUnit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UC_Purchases.resx">
       <DependentUpon>UC_Purchases.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Sales.resx">
       <DependentUpon>UC_Sales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_SearchTable.resx">
-      <DependentUpon>UC_SearchTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_UpdateUnitsContentsInfo.resx">
-      <DependentUpon>UC_UpdateUnitsContentsInfo.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GControls\GControls.csproj">
-      <Project>{B25EEE95-3CEA-4520-9573-C8C2BE7E810B}</Project>
-      <Name>GControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{ddf1c044-3d74-4bc0-87ec-a9afabefd0cc}</Project>
       <Name>Models</Name>

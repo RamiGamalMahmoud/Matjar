@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
             this.pnl_controls_home = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_new_product = new System.Windows.Forms.Button();
             this.btn_daly_sales = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.storeUC1 = new UserControls.StoreUC();
             this.uC_Purchases1 = new UserControls.UC_Purchases();
             this.uC_Sales1 = new UserControls.UC_Sales();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnl_controls_home.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +58,15 @@
             this.pnl_controls_home.Name = "pnl_controls_home";
             this.pnl_controls_home.Size = new System.Drawing.Size(180, 758);
             this.pnl_controls_home.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 57);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(180, 5);
+            this.panel1.TabIndex = 4;
             // 
             // label5
             // 
@@ -128,7 +137,6 @@
             this.btn_statistics.TabIndex = 22;
             this.btn_statistics.Text = "احصاءات";
             this.btn_statistics.UseVisualStyleBackColor = false;
-            this.btn_statistics.Click += new System.EventHandler(this.btn_statistics_Click);
             // 
             // btn_purchases
             // 
@@ -194,15 +202,6 @@
             this.uC_Sales1.Size = new System.Drawing.Size(1004, 758);
             this.uC_Sales1.TabIndex = 1;
             this.uC_Sales1.WorkDay = null;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 57);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(180, 5);
-            this.panel1.TabIndex = 4;
             // 
             // DashBoard
             // 

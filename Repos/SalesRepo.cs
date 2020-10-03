@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer;
 using QueryBuilder;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -50,15 +51,37 @@ namespace Repos
             this.conn.Run(query.QueryString, query.QueryParams);
         }
 
-        public void UpdateSales(string processId, double price , double amount, double total)
+        public void UpdateSales(string processId, double price, double amount, double total)
         {
             Query query = new Query();
-            string[] columns = { "price", "amount", "total"};
+            string[] columns = { "price", "amount", "total" };
             string[] values = { price.ToString(), amount.ToString(), total.ToString() };
             query.Update("sales")
                 .SetValues(columns, values)
                 .Where("process_id", "=", processId);
             this.conn.Run(query.QueryString, query.QueryParams);
+        }
+
+        public DataTable GetCategories()
+        {
+            using (Query query = new Query())
+            {
+                query.Select("*")
+                    .From("categories");
+                return this.conn.GetAll(query.QueryString, query.QueryParams);
+            }
+        }
+
+        public DataTable GetCategoryProducts(string categoryId)
+        {
+            using (Query query = new Query())
+            {
+                query.Select("*")
+                    .From("products_data_view")
+                    .Where("category_id", "=", categoryId)
+                    .OrderBy("product_name", SordOrder.ASC);
+                return this.conn.GetAll(query.QueryString, query.QueryParams);
+            }
         }
     }
 }

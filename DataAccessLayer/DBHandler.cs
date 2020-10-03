@@ -30,8 +30,8 @@ namespace DataAccessLayer
 
         public DBHandler()
         {
-            Connection = new SQLiteConnection(LoadConnectionString());
-            Connection.Open();
+            this.Connection = new SQLiteConnection(LoadConnectionString());
+            this.Connection.Open();
         }
 
         public static string LoadConnectionString(string connection_string = "MatjarDatabase")
@@ -43,7 +43,7 @@ namespace DataAccessLayer
         public DataTable ExecuteSQL(string sql)
         {
             DataTable result = new DataTable();
-            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, Connection))
+            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, this.Connection))
             {
                 adapter.Fill(result);
             }
@@ -53,7 +53,7 @@ namespace DataAccessLayer
         public string ExecuteNonQuery(string query)
         {
            
-            using (SQLiteCommand cmd = new SQLiteCommand(query, Connection))
+            using (SQLiteCommand cmd = new SQLiteCommand(query, this.Connection))
             {
                 try
                 {
@@ -68,7 +68,7 @@ namespace DataAccessLayer
         public DataRow ExecuteSQLOneRow(string sql)
         {
             DataTable tbl = new DataTable();
-            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, Connection))
+            using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, this.Connection))
             {
                 adapter.Fill(tbl);
             }
@@ -94,7 +94,7 @@ namespace DataAccessLayer
             }
             sql += " );";
 
-            SQLiteCommand cmd = new SQLiteCommand(sql, Connection);
+            SQLiteCommand cmd = new SQLiteCommand(sql, this.Connection);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -112,14 +112,14 @@ namespace DataAccessLayer
         public void DeleteData(string table_name, string id)
         {
             string sql = "DELETE FROM " + table_name + " WHERE process_id = " + id;
-            using (SQLiteCommand cmd = new SQLiteCommand(sql, Connection))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, this.Connection))
                 cmd.ExecuteNonQuery();
         }
 
         public void deleteData(string table_name, string id_column, string id)
         {
             string sql = "DELETE FROM " + table_name + " WHERE " + id_column + " = " + id;
-            using (SQLiteCommand cmd = new SQLiteCommand(sql, Connection))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, this.Connection))
                 cmd.ExecuteNonQuery();
         }
 
@@ -128,7 +128,7 @@ namespace DataAccessLayer
         public void UpdateSalesTable(double quantity, double price, double total, string process_id)
         {
             string sql = string.Format("UPDATE sales SET amount = {0} ,price = {1}, total = {2} WHERE process_id = {3}", quantity, price, total, process_id);
-            using (SQLiteCommand cmd = new SQLiteCommand(sql, Connection))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, this.Connection))
             {
                 cmd.ExecuteNonQuery();
             }
@@ -163,7 +163,7 @@ namespace DataAccessLayer
             Dictionary<string, string> product_data = new Dictionary<string, string>();
             try
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, Connection))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, this.Connection))
                 {
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {

@@ -104,21 +104,21 @@ namespace DataAccessLayer
         // SELECT [get categories]
         public static DataTable Categories()
         {
-            Query.Query query = new Query.Query();
-            query.Select("id, category ")
-              .From("categories");
+            //Query.Query query = new Query.Query();
+            //query.Select("id, category ")
+            //  .From("categories");
 
-            return DBHelber.ExecuteQuery(query.QueryString);
+            return null;
         }
 
         // SELECT [get Units]
         public static DataTable Units()
         {
-            var query = new Query.Query();
-            query.Select("id, unit")
-                .From("units")
-                .OrderBy("unit", Query.SordOrder.ASC);
-            return DBHelber.ExecuteQuery(query.QueryString);
+            //var query = new Query.Query();
+            //query.Select("id, unit")
+            //    .From("units")
+            //    .OrderBy("unit", Query.SordOrder.ASC);
+            return null;
         }
 
         // get product id from product name and unit
@@ -173,13 +173,13 @@ namespace DataAccessLayer
 
         public static DataTable GetDaySales(string start_date)
         {
-            Query.Query query = new Query.Query();
-            query.Select("*")
-                .From("sales_view")
-                .Where("process_id", "like", $"{start_date}%")
-                .OrderBy("process_id");
+            //Query.Query query = new Query.Query();
+            //query.Select("*")
+            //    .From("sales_view")
+            //    .Where("process_id", "like", $"{start_date}%")
+            //    .OrderBy("process_id");
             //string query = string.Format("SELECT * FROM sales_view WHERE process_id LIKE '{0}____' ORDER BY process_id", start_date);
-            return DBHelber.Exec(query.QueryString, query.QueryParams);
+            return null;
         }
 
         // Get the sales table for a process id
