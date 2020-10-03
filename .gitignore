@@ -6,12 +6,8 @@ obj/
 bin/
 Resources/
 Setup/
-icons/
-Query/
 temp/*.txt
-*.ico
 *.htm
 
 /packages
-*.exe
 .vs/
