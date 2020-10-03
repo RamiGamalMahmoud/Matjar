@@ -1,50 +1,69 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-//using GControls;
-using System.Collections.Generic;
 using Repos;
-using Models;
 
 namespace UserControls
 {
     public partial class UC_Add_Product_Full : UserControl
     {
-        private ProductsManagementRepo repo;
+        private UnitsContentsRepo unitsContentsRepo;
         private ProductsRepo productsRepo;
+        private UnitsRepo unitsRepo;
+        private CategoriesRepo categoriesRepo;
 
         public UC_Add_Product_Full()
         {
             this.InitializeComponent();
-            this.repo = new ProductsManagementRepo();
-            this.productsRepo = new ProductsRepo();
         }
 
-        public void Start(DataTable categories, DataTable units)
+        public void Start()
         {
-            this.combo_categories.DisplayMember = "category";
-            this.combo_categories.ValueMember = "id";
-            this.combo_categories.DataSource = categories;
+            this.InitRepos();
 
-            this.combo_units.DisplayMember = "unit";
-            this.combo_units.ValueMember = "id";
-            this.combo_units.DataSource = units;
+            DataTable categories = this.categoriesRepo.GetCategories();
+            DataTable units = this.unitsRepo.GetUnits();
 
-            this.combo_base_units.BindingContext = new BindingContext();
-            this.combo_base_units.DisplayMember = "unit";
-            this.combo_base_units.ValueMember = "id";
-            this.combo_base_units.DataSource = units;
-
-            this.combo_sub_units.DisplayMember = "unit";
-            this.combo_sub_units.ValueMember = "id";
-            this.combo_sub_units.DataSource = units;
-            this.combo_sub_units.BindingContext = new BindingContext();
+            this.InitGrids();
+            this.FillGrids(categories, units);
 
             this.combo_categories.SelectedValueChanged += this.combo_categories_SelectedValueChanged;
             this.combo_categories_SelectedValueChanged(this.combo_categories, EventArgs.Empty);
 
             this.combo_existed_products_names.SelectedValueChanged += this.combo_existed_products_names_SelectedValueChanged;
             this.combo_existed_products_names_SelectedValueChanged(this.combo_categories, EventArgs.Empty);
+        }
+
+        private void InitRepos()
+        {
+            this.productsRepo = new ProductsRepo();
+            this.unitsRepo = new UnitsRepo();
+            this.categoriesRepo = new CategoriesRepo();
+            this.unitsContentsRepo = new UnitsContentsRepo();
+        }
+
+        private void InitGrids()
+        {
+            this.combo_categories.DisplayMember = "category";
+            this.combo_categories.ValueMember = "id";
+
+            this.combo_units.DisplayMember = "unit";
+            this.combo_units.ValueMember = "id";
+
+            this.combo_base_units.BindingContext = new BindingContext();
+            this.combo_base_units.DisplayMember = "unit";
+            this.combo_base_units.ValueMember = "id";
+
+            this.combo_sub_units.BindingContext = new BindingContext();
+            this.combo_sub_units.DisplayMember = "unit";
+            this.combo_sub_units.ValueMember = "id";
+        }
+
+        private void FillGrids(DataTable categoriesTable, DataTable unitsTable)
+        {
+            this.combo_categories.DataSource = categoriesTable;
+            this.combo_base_units.DataSource = unitsTable;
+            this.combo_sub_units.DataSource = unitsTable;
         }
 
         private void combo_categories_SelectedValueChanged(object sender, EventArgs e)
@@ -61,7 +80,7 @@ namespace UserControls
             string productNameId = this.combo_existed_products_names.SelectedValue.ToString();
             this.dgv_existing_products.DataSource = this.productsRepo.GetProductsByNameId(productNameId);
 
-            this.dgv_info.DataSource = this.repo.GetUnitsInfo(productNameId);
+            this.dgv_info.DataSource = this.unitsContentsRepo.GetUnitsInfo(productNameId);
         }
 
         private void dgv_info_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

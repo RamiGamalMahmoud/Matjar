@@ -1,7 +1,5 @@
-﻿using DataAccessLayer;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Repos;
-
 
 namespace UserControls
 {

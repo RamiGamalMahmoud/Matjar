@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+using Extensions;
 using System.Windows.Forms;
-using DataAccessLayer;
 using Repos;
 
 namespace UserControls

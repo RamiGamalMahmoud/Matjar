@@ -56,7 +56,8 @@ namespace Matjar
         private void btn_new_product_Click(object sender, EventArgs e)
         {
             this.SetActiveButton((Button)sender);
-            new AddUpdateProductForm().Show();
+
+            new AddUpdateProductForm().Start();
         }
     }
 }
