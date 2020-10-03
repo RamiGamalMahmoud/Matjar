@@ -19,14 +19,6 @@ namespace Repos
             this.conn.Dispose();
         }
 
-        public DataTable GetAllCategories()
-        {
-            Query query = new Query();
-            query.Select("id, category ")
-              .From("categories");
-            return this.conn.GetAll(query.QueryString);
-        }
-
         public DataTable GetAllUnits()
         {
             Query query = new Query();
@@ -52,16 +44,6 @@ namespace Repos
                 .From("purchases_monthes")
                 .Where("year", "=", yearId)
                 .OrderBy("monthes", SordOrder.DESC);
-            return this.conn.GetAll(query.QueryString, query.QueryParams);
-        }
-
-        public DataTable GetCategoryProducts(string categoryId)
-        {
-            Query query = new Query();
-            query.Select("*")
-                .From("products_data_view")
-                .Where("category_id", "=", categoryId)
-                .OrderBy("product_name");
             return this.conn.GetAll(query.QueryString, query.QueryParams);
         }
 

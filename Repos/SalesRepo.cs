@@ -61,27 +61,5 @@ namespace Repos
                 .Where("process_id", "=", processId);
             this.conn.Run(query.QueryString, query.QueryParams);
         }
-
-        public DataTable GetCategories()
-        {
-            using (Query query = new Query())
-            {
-                query.Select("*")
-                    .From("categories");
-                return this.conn.GetAll(query.QueryString, query.QueryParams);
-            }
-        }
-
-        public DataTable GetCategoryProducts(string categoryId)
-        {
-            using (Query query = new Query())
-            {
-                query.Select("*")
-                    .From("products_data_view")
-                    .Where("category_id", "=", categoryId)
-                    .OrderBy("product_name", SordOrder.ASC);
-                return this.conn.GetAll(query.QueryString, query.QueryParams);
-            }
-        }
     }
 }

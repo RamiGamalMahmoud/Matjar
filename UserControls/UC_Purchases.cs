@@ -10,6 +10,7 @@ namespace UserControls
     public partial class UC_Purchases : UserControl
     {
         private PurchasesRepo repo;
+        private ProductsRepo productsRepo;
         public UC_Purchases()
         {
             this.InitializeComponent();
@@ -25,8 +26,12 @@ namespace UserControls
             if (this.repo == null)
             {
                 this.repo = new PurchasesRepo();
+                this.productsRepo = new ProductsRepo();
                 this.dgv_purchases.DoubleBuffered(true);
-                this.combo_category_name.DataSource = this.repo.GetAllCategories();
+                using (CategoriesRepo categoriesRepo = new CategoriesRepo())
+                {
+                    this.combo_category_name.DataSource = categoriesRepo.GetCategories();
+                }
                 this.combo_category_name.SelectedIndexChanged += this.combo_category_name_SelectedIndexChanged;
                 this.combo_category_name_SelectedIndexChanged(this.combo_category_name, EventArgs.Empty);
                 this.combo_unit_name.SelectedIndexChanged += this.combo_unit_name_SelectedIndexChanged;
@@ -37,7 +42,7 @@ namespace UserControls
         private void combo_category_name_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.lbl_category_id.Text = this.combo_category_name.SelectedValue.ToString();
-            this.combo_product_name.DataSource = this.repo.GetCategoryProducts(this.combo_category_name.SelectedValue.ToString());
+            this.combo_product_name.DataSource = this.productsRepo.GetCategoryProducts(this.combo_category_name.SelectedValue.ToString());
         }
 
         private void combo_product_name_SelectedIndexChanged(object sender, EventArgs e)

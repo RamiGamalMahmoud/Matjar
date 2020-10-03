@@ -11,11 +11,13 @@ namespace UserControls
     public partial class UC_Add_Product_Full : UserControl
     {
         private ProductsManagementRepo repo;
+        private ProductsRepo productsRepo;
 
         public UC_Add_Product_Full()
         {
             this.InitializeComponent();
             this.repo = new ProductsManagementRepo();
+            this.productsRepo = new ProductsRepo();
         }
 
         public void Start(DataTable categories, DataTable units)
@@ -47,18 +49,18 @@ namespace UserControls
 
         private void combo_categories_SelectedValueChanged(object sender, EventArgs e)
         {
-            DataTable existedProducts = this.repo.GetCategoryProducts(this.combo_categories.SelectedValue.ToString());
-
             this.combo_existed_products_names.DisplayMember = "product_name";
             this.combo_existed_products_names.ValueMember = "product_name_id";
-            this.combo_existed_products_names.DataSource = existedProducts;
+            this.combo_existed_products_names.DataSource = this.productsRepo.GetProductsNamesByCategory(this.combo_categories.SelectedValue.ToString());
         }
 
         private void combo_existed_products_names_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (this.combo_existed_products_names.SelectedValue == null) return;
+            if (this.combo_existed_products_names.SelectedValue == null)
+                return;
             string productNameId = this.combo_existed_products_names.SelectedValue.ToString();
-            this.dgv_existing_products.DataSource = this.repo.GetProductNameData(productNameId);
+            this.dgv_existing_products.DataSource = this.productsRepo.GetProductsByNameId(productNameId);
+
             this.dgv_info.DataSource = this.repo.GetUnitsInfo(productNameId);
         }
 

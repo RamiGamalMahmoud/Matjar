@@ -11,6 +11,7 @@ namespace UserControls
     public partial class UC_Sales : UserControl
     {
         private SalesRepo repo;
+        private ProductsRepo productsRepo;
         public int LastSerial { get; set; }
         public string WorkDay { get; set; }
         public string NextProcessId { get; set; }
@@ -41,6 +42,7 @@ namespace UserControls
         {
             this.dgv_sales.DoubleBuffered(true);
             this.repo = new SalesRepo();
+            this.productsRepo = new ProductsRepo();
 
             this.lbl_work_day.Text = this.date_picker_work_day.Value.ToString("ddd") + " " + this.date_picker_work_day.Value.ToString("yyyy/M/d");
             this.WorkDay = this.date_picker_work_day.Value.ToString("yyyyMMdd");
@@ -54,7 +56,10 @@ namespace UserControls
             this.viewWorkDaySales();
             this.dgv_sales.CellValueChanged += this.dgv_sales_CellValueChanged;
 
-            this.combo_category_name.DataSource = this.repo.GetCategories();
+            using (CategoriesRepo categoriesRepo = new CategoriesRepo())
+            {
+                this.combo_category_name.DataSource = categoriesRepo.GetCategories();
+            }
 
             this.combo_category_name.SelectedValueChanged += this.combo_category_name_SelectedValueChanged;
             this.combo_category_name_SelectedValueChanged(this.combo_category_name, EventArgs.Empty);
@@ -66,8 +71,7 @@ namespace UserControls
         private void combo_category_name_SelectedValueChanged(object sender, EventArgs e)
         {
             this.lbl_category_id.Text = this.combo_category_name.SelectedValue.ToString();
-            this.combo_product_name.DataSource = this.repo.GetCategoryProducts(this.combo_category_name.SelectedValue.ToString());
-
+            this.combo_product_name.DataSource = this.productsRepo.GetCategoryProducts(this.combo_category_name.SelectedValue.ToString());
         }
 
 
