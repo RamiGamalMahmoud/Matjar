@@ -3,6 +3,7 @@ using System;
 using QueryBuilder;
 using System.Data;
 using System.Collections.Generic;
+using Models;
 
 namespace Repos
 {
@@ -110,6 +111,48 @@ namespace Repos
                 query.InsertInto("products")
                     .Values(columns, data.ToArray());
             }
+        }
+
+        public Product GetProductById(string productId)
+        {
+            using (Query query = new Query())
+            {
+                query.Select("product_name, amount, selling_price, purchasing_price, profit_margin, product_name_id, unit_id, category_id, unit, category")
+                    .From("products_data_view")
+                    .Where("product_id", "=", productId);
+                return this.ExtractProductData(this.conn.Get(query.QueryString, query.QueryParams));
+            }
+        }
+
+        private Product ExtractProductData(DataRow data)
+        {
+            Product product = new Product();
+
+            double amount, selling_price, purchaning_price, profit_margin;
+
+            // Database properites
+            product.UnitId = int.Parse(data["unit_id"].ToString());
+            product.CategoryId = int.Parse(data["category_id"].ToString());
+            product.ProductNameId = int.Parse(data["product_name_id"].ToString());
+
+            // View properites
+            product.ProductName = data["product_name"].ToString();
+            product.UnitName = data["unit"].ToString();
+            product.CategoryName = data["category"].ToString();
+
+            double.TryParse(data["amount"].ToString(), out amount);
+            product.Amount = amount;
+
+            double.TryParse(data["selling_price"].ToString(), out selling_price);
+            product.SellingPrice = selling_price;
+
+            double.TryParse(data["purchasing_price"].ToString(), out purchaning_price);
+            product.PurchaningPrice = purchaning_price;
+
+            double.TryParse(data["profit_margin"].ToString(), out profit_margin);
+            product.ProfitMargin = profit_margin;
+
+            return product;
         }
     }
 }

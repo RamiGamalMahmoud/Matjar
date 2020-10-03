@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Repos;
+using Models;
 
 
 namespace UserControls
@@ -16,8 +17,8 @@ namespace UserControls
         public string WorkDay { get; set; }
         public string NextProcessId { get; set; }
 
-        private Models.Product CurrentProduct = new Models.Product();
-        private Timer timer = new Timer();
+        private Product CurrentProduct = new Product();
+        private readonly Timer timer = new Timer();
 
 
         public UC_Sales()
@@ -48,7 +49,7 @@ namespace UserControls
             this.WorkDay = this.date_picker_work_day.Value.ToString("yyyyMMdd");
             this.lbl_day_total.Text = "0";
             this.timer.Interval = 10;
-            this.timer.Tick += this.timer_Tick;
+            this.timer.Tick += this.TimerTick;
             this.timer.Start();
 
             this.date_picker_work_day.Value = DateTime.Now.Date;
@@ -81,9 +82,12 @@ namespace UserControls
             if (this.combo_product_name.SelectedValue != null)
             {
                 this.lbl_product_id.Text = this.combo_product_name.SelectedValue.ToString();
-                this.CurrentProduct.ProductID = int.Parse(this.combo_product_name.SelectedValue.ToString());
-                this.lbl_price.Text = this.CurrentProduct.selling_price.ToString();
-                this.lbl_unit.Text = this.CurrentProduct.unit_name.ToString();
+
+                this.CurrentProduct = this.productsRepo.GetProductById(this.combo_product_name.SelectedValue.ToString());
+
+                this.lbl_price.Text = this.CurrentProduct.SellingPrice.ToString();
+                this.lbl_unit.Text = this.CurrentProduct.UnitName.ToString();
+
 
                 this.upateTotal();
                 this.text_quantity.Focus();
@@ -96,6 +100,7 @@ namespace UserControls
             this.dgv_sales.DataSource = this.repo.GetDaySales(this.WorkDay);
             this.NextProcessId = this.generateProcessID((DataTable)this.dgv_sales.DataSource);
         }
+
         private string generateProcessID(DataTable t)
         {
             string last_process_id;
@@ -164,18 +169,17 @@ namespace UserControls
             data.Add(this.CurrentProduct.ProductID.ToString());
 
             data.Add(this.text_quantity.Text);
-            data.Add(this.CurrentProduct.selling_price.ToString());
+            data.Add(this.CurrentProduct.SellingPrice.ToString());
 
             data.Add(this.lbl_total.Text);
             data.Add(DateTime.Now.ToString("HH:mm:ss"));
             data.Add(DateTime.Now.Date.ToShortDateString());
-            data.Add(this.CurrentProduct.category_id.ToString());
+            data.Add(this.CurrentProduct.CategoryId.ToString());
 
-            data.Add(this.CurrentProduct.unit_id.ToString());
+            data.Add(this.CurrentProduct.UnitId.ToString());
 
             this.repo.CreateSales(data);
 
-            //DataTable sales_data_table = (DataTable)dgv_sales.DataSource;
             ((DataTable)this.dgv_sales.DataSource).Rows.Add(this.repo.GetSalesOfProcess(this.NextProcessId).ItemArray);
             this.text_quantity.Text = "0";
             this.text_quantity.Focus();
@@ -188,7 +192,7 @@ namespace UserControls
             this.dgv_sales.FirstDisplayedScrollingRowIndex = this.dgv_sales.Rows.Count - 1;
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void TimerTick(object sender, EventArgs e)
         {
             this.lbl_clock.Text = DateTime.Now.ToLongTimeString();
         }
@@ -239,11 +243,6 @@ namespace UserControls
             {
                 this.LastSerial = 0;
             }
-        }
-
-        private void text_quantity_KeyDown_1(object sender, KeyEventArgs e)
-        {
-
         }
 
         public void dgv_sales_CellValueChanged(object sender, DataGridViewCellEventArgs e)

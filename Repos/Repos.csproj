@@ -54,6 +54,10 @@
       <Project>{665d6dd6-40ed-45c1-a76b-255cf576e733}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{ddf1c044-3d74-4bc0-87ec-a9afabefd0cc}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QueryBuilder\QueryBuilder.csproj">
       <Project>{9899f2c3-adf0-4353-b26f-da815144e11b}</Project>
       <Name>QueryBuilder</Name>
