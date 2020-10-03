@@ -23,13 +23,11 @@ namespace Repos
         {
             using (Query query = new Query())
             {
-                string[] columns = { "selling_price", "purchasing_price", "profit_margin" };
+                string[] columns = { "purchasing_price", "selling_price", "profit_margin" };
                 query.Update("products")
                     .SetValues(columns, data)
                     .Where("product_id", "=", productId);
                 int result = this.conn.Run(query.QueryString, query.QueryParams);
-                Console.WriteLine(query.QueryString);
-                Console.WriteLine(result);
             }
 
             return null;

@@ -47,7 +47,7 @@ namespace UserControls
             DataTable tbl = (DataTable)this.dgv_product_name_data.DataSource;
             foreach (DataRow row in tbl.Rows)
             {
-                string[] data = { row[3].ToString(), row[4].ToString(), row[5].ToString() };
+                string[] data = { row["purchasing_price"].ToString(), row["selling_price"].ToString(), row["profit_margin"].ToString() };
                 string productId = row[0].ToString();
                 this.repo.UpdateProduct(data, productId);
             }

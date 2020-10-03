@@ -1,8 +1,6 @@
-﻿using System;
-using System.Data;
-using DataAccessLayer;
+﻿using DataAccessLayer;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Data;
 
 
 namespace Models
@@ -11,12 +9,12 @@ namespace Models
     public static class PurchasingProcess
     {
         private static DBHandler db = new DBHandler();
-        private static List<PurchasedProduct> purchased_products = new List<PurchasedProduct>();
-        public static List<PurchasedProduct> PurchasedProducts
-        {
-            get { return purchased_products; }
-            private set { purchased_products = value; }
-        }
+        //private static List<PurchasedProduct> purchased_products = new List<PurchasedProduct>();
+        public static List<PurchasedProduct> PurchasedProducts { get; private set; } = new List<PurchasedProduct>();
+        //{
+        //    get { return purchased_products; }
+        //    private set { purchased_products = value; }
+        //}
 
 
         public static void ParseUnits(string product_name_id, string purchasing_unit_id, string purchasing_price)
@@ -31,7 +29,7 @@ namespace Models
                 purchased_product.ProductNameID = product_name_id;
                 purchased_product.UnitID = purchasing_unit_id;
                 purchased_product.PurchasingPrice = double.Parse(purchasing_price);
-                purchased_products.Add(purchased_product);
+                PurchasedProducts.Add(purchased_product);
             }
             ParseFromUnitsInfo(product_name_id, purchasing_unit_id, purchasing_price);
         }
@@ -56,7 +54,7 @@ namespace Models
                 purchased_product.PurchasingPrice = (price / count);
                 purchased_product.PurchasingPrice = double.Parse(string.Format("{0:0.00}", purchased_product.PurchasingPrice));
                 purchased_product.UnitID = row["sub_unit_id"].ToString();
-                purchased_products.Add(purchased_product);
+                PurchasedProducts.Add(purchased_product);
 
                 ParseFromUnitsInfo(product_name_id, purchased_product.UnitID, purchased_product.PurchasingPrice.ToString());
             }
