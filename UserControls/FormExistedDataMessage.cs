@@ -75,13 +75,13 @@ namespace UserControls
             this.btn_modify_existed.Visible = false;
             this.btn_ignore.Visible = false;
 
-            this.lbl_product_name.Text = category + "  ( " + existed_product.product_name + " )";
+            this.lbl_product_name.Text = category + "  ( " + existed_product.ProductName + " )";
 
-            this.dgv_existing_products.Rows.Add("الوحدة", existed_product.unit_name, new_data[0]);
-            this.dgv_existing_products.Rows.Add("العدد", existed_product.amount, new_data[1]);
-            this.dgv_existing_products.Rows.Add("سعر الشراء", existed_product.purchaning_price, new_data[2]);
-            this.dgv_existing_products.Rows.Add("سعر البيع", existed_product.selling_price, new_data[3]);
-            this.dgv_existing_products.Rows.Add("هامش الربح", existed_product.profit_margin, new_data[4]);
+            this.dgv_existing_products.Rows.Add("الوحدة", existed_product.UnitName, new_data[0]);
+            this.dgv_existing_products.Rows.Add("العدد", existed_product.Amount, new_data[1]);
+            this.dgv_existing_products.Rows.Add("سعر الشراء", existed_product.PurchaningPrice, new_data[2]);
+            this.dgv_existing_products.Rows.Add("سعر البيع", existed_product.SellingPrice, new_data[3]);
+            this.dgv_existing_products.Rows.Add("هامش الربح", existed_product.ProfitMargin, new_data[4]);
         }
 
         private void dgv_existing_products_CellValueChanged(object sender, DataGridViewCellEventArgs e)
