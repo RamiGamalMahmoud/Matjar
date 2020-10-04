@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace Models
 {
@@ -19,6 +19,24 @@ namespace Models
         public double SellingPrice { get; set; }
         public double PurchaningPrice { get; set; }
         public double ProfitMargin { get; set; }
+
+        public Product Clone()
+        {
+            Product product = new Product();
+            product.ProductID = this.ProductID;
+            product.ProductNameId = this.ProductNameId;
+            product.UnitId = this.UnitId;
+            product.ProductName = this.ProductName;
+            product.UnitId = this.UnitId;
+            product.UnitName = this.UnitName;
+            product.CategoryId = this.CategoryId;
+            product.CategoryName = this.CategoryName;
+            product.Amount = this.Amount;
+            product.SellingPrice = this.SellingPrice;
+            product.PurchaningPrice = this.PurchaningPrice;
+            product.ProfitMargin = this.ProfitMargin;
+            return product;
+        }
 
     }
 }

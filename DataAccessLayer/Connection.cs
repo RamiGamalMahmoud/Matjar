@@ -38,7 +38,7 @@ namespace DataAccessLayer
             }
             if (table.Rows.Count == 0)
             {
-                throw new Exception("No data returned !");
+                return null;
             }
             return table.Rows[0];
         }

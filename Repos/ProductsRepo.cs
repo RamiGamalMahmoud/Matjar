@@ -122,6 +122,18 @@ namespace Repos
             }
         }
 
+        public DataRow GetProductByNameIdAndUnitId(string productNameId, string unitId)
+        {
+            using (Query query = new Query())
+            {
+                query.Select("product_id, product_name, amount, selling_price, purchasing_price, profit_margin, product_name_id, unit_id, category_id, unit, category")
+                    .From("products_data_view")
+                    .Where("product_name_id", "=", productNameId)
+                    .AndWhere("unit_id", "=", unitId);
+                return this.conn.Get(query.QueryString, query.QueryParams);
+            }
+        }
+
         private Product ExtractProductData(DataRow data)
         {
             Product product = new Product();

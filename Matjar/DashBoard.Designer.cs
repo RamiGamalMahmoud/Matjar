@@ -217,7 +217,6 @@
             this.Name = "DashBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Matjar 1.0.2";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DashBoard_Load);
             this.pnl_controls_home.ResumeLayout(false);
             this.ResumeLayout(false);

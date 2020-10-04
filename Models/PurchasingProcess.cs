@@ -9,13 +9,7 @@ namespace Models
     public static class PurchasingProcess
     {
         private static DBHandler db = new DBHandler();
-        //private static List<PurchasedProduct> purchased_products = new List<PurchasedProduct>();
         public static List<PurchasedProduct> PurchasedProducts { get; private set; } = new List<PurchasedProduct>();
-        //{
-        //    get { return purchased_products; }
-        //    private set { purchased_products = value; }
-        //}
-
 
         public static void ParseUnits(string product_name_id, string purchasing_unit_id, string purchasing_price)
         {
