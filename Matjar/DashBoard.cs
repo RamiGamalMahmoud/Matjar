@@ -24,7 +24,6 @@ namespace Matjar
         {
             foreach (Button btn in this.buttons)
             {
-                Console.WriteLine(Properties.Settings.Default["BaseColor"]);
                 btn.BackColor = (Color)Properties.Settings.Default["BaseColor"];
                 btn.ForeColor = Color.White;
             }
