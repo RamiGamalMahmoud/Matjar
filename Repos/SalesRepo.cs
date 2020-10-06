@@ -17,29 +17,53 @@ namespace Repos
         public DataTable GetDaySales(string workDay)
         {
             Query query = new Query();
-            query.Select("*")
+            query.Select("process_id, category_name, product_id, product_name, unit_name, amount, price, total, time_of_sale")
                 .From("sales_view")
                 .Where("process_id", "like", $"{workDay}%")
                 .OrderBy("process_id");
             return this.conn.GetAll(query.QueryString, query.QueryParams);
         }
 
-        public void CreateSales(List<string> data)
+        public DataRow CreateSales(List<string> data)
         {
             Query query = new Query();
-            string[] columns = { "process_id", "product_id", "amount", "price", "total", "time_of_sale", "date_of_sale", "category_id", "unit_id" };
+            string[] columns = { "product_id", "amount", "price", "total", "time_of_sale", "date_of_sale", "category_id", "unit_id" };
             query.InsertInto("sales")
                 .Values(columns, data.ToArray());
             this.conn.Run(query.QueryString, query.QueryParams);
+            return this.GetLastInserted();
         }
 
         public DataRow GetSalesOfProcess(string processId)
         {
             Query query = new Query();
-            query.Select("*")
+            query.Select("process_id, category_name, product_id, product_name, unit_name, amount, price, total, time_of_sale")
                 .From("sales_view")
                 .Where("process_id", "=", processId);
             return this.conn.Get(query.QueryString, query.QueryParams);
+        }
+
+        public DataRow GetLastInserted()
+        {
+            using (Query query = new Query())
+            {
+                query.Select("process_id, category_name, product_id, product_name, unit_name, amount, price, total, time_of_sale")
+                    .From("sales_view")
+                    .OrderBy("process_id", SordOrder.DESC)
+                    .Limit(1);
+                return this.conn.Get(query.QueryString, query.QueryParams);
+            }
+        }
+
+        public DataTable GetSalesByDate(string date)
+        {
+            using (Query query = new Query())
+            {
+                query.Select("process_id, category_name, product_id, product_name, unit_name, amount, price, total, time_of_sale")
+                    .From("sales_view")
+                    .Where("date_of_sale", "=", date);
+                return this.conn.GetAll(query.QueryString, query.QueryParams);
+            }
         }
 
         public void RemoveSales(string processId)
