@@ -78,7 +78,16 @@ namespace DataAccessLayer
             using (SQLiteCommand cmd = new SQLiteCommand(sql, this.conn))
             {
                 cmd.Parameters.AddRange(this.SqlToSQLiteParameters(param));
-                return cmd.ExecuteNonQuery();
+                try
+                {
+                    return cmd.ExecuteNonQuery();
+                }
+                catch(SQLiteException ex)
+                {
+                    Console.WriteLine(ex.Message + " : " + param[0].Value);
+                    return 0;
+                }
+                //return cmd.ExecuteNonQuery();
             }
         }
 
