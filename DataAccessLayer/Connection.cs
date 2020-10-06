@@ -87,7 +87,6 @@ namespace DataAccessLayer
                     Console.WriteLine(ex.Message + " : " + param[0].Value);
                     return 0;
                 }
-                //return cmd.ExecuteNonQuery();
             }
         }
 
