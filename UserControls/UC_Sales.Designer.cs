@@ -82,12 +82,15 @@
             // 
             // LblDayTotal
             // 
-            this.LblDayTotal.Dock = System.Windows.Forms.DockStyle.Right;
-            this.LblDayTotal.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDayTotal.Location = new System.Drawing.Point(899, 0);
+            this.LblDayTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(79)))), ((int)(((byte)(107)))));
+            this.LblDayTotal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblDayTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblDayTotal.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDayTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.LblDayTotal.Location = new System.Drawing.Point(0, 0);
             this.LblDayTotal.Name = "LblDayTotal";
             this.LblDayTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.LblDayTotal.Size = new System.Drawing.Size(101, 28);
+            this.LblDayTotal.Size = new System.Drawing.Size(1000, 54);
             this.LblDayTotal.TabIndex = 3;
             this.LblDayTotal.Text = "0";
             this.LblDayTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -201,9 +204,9 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.panel1.Controls.Add(this.LblDayTotal);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 756);
+            this.panel1.Location = new System.Drawing.Point(0, 730);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1000, 28);
+            this.panel1.Size = new System.Drawing.Size(1000, 54);
             this.panel1.TabIndex = 8;
             // 
             // TextQuantity
@@ -295,7 +298,7 @@
             this.DgvSales.RowHeadersWidth = 30;
             this.DgvSales.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgvSales.RowTemplate.Height = 30;
-            this.DgvSales.Size = new System.Drawing.Size(1000, 620);
+            this.DgvSales.Size = new System.Drawing.Size(1000, 594);
             this.DgvSales.TabIndex = 7;
             this.DgvSales.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvSalesCellMouseClicked);
             // 
