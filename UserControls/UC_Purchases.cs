@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Extensions;
 using System.Windows.Forms;
 using Repos;
+using Models;
 
 namespace UserControls
 {
@@ -26,6 +27,7 @@ namespace UserControls
             {
                 this.repo = new PurchasesRepo();
                 this.productsRepo = new ProductsRepo();
+
                 this.dgv_purchases.DoubleBuffered(true);
                 using (CategoriesRepo categoriesRepo = new CategoriesRepo())
                 {
@@ -41,7 +43,7 @@ namespace UserControls
         private void combo_category_name_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.lbl_category_id.Text = this.combo_category_name.SelectedValue.ToString();
-            this.combo_product_name.DataSource = this.productsRepo.GetCategoryProducts(this.combo_category_name.SelectedValue.ToString());
+            this.combo_product_name.DataSource = this.productsRepo.GetProductsNamesByCategory(this.combo_category_name.SelectedValue.ToString());
         }
 
         private void combo_product_name_SelectedIndexChanged(object sender, EventArgs e)
@@ -78,7 +80,7 @@ namespace UserControls
 
             if (this.lbl_total.Text == "0")
             {
-                var notification = new System.Windows.Forms.NotifyIcon()
+                var notification = new NotifyIcon()
                 {
                     Visible = true,
                     Icon = System.Drawing.SystemIcons.Shield,
@@ -91,26 +93,41 @@ namespace UserControls
 
             this.combo_years.DataSource = this.repo.GetYears().ColumnToArray(0);
 
-            new SettingPrices().ShowDialog(
-                this.combo_product_name.SelectedValue.ToString(),
-                this.combo_unit_name.SelectedValue.ToString(),
-                this.text_price.Text);
+            Product purchasedProduct = this.CreateProduct();
+
+            new SettingPrices().ShowDialog(purchasedProduct);
             DateTime date = this.dateTimePicker1.Value;
 
-            List<string> purchasedProduct = new List<string>();
-            purchasedProduct.Add(this.combo_category_name.SelectedValue.ToString());
-            purchasedProduct.Add(this.combo_product_name.SelectedValue.ToString());
-            purchasedProduct.Add(this.combo_unit_name.SelectedValue.ToString());
-            purchasedProduct.Add(this.text_price.Text);
-            purchasedProduct.Add(this.text_quantity.Text);
-            purchasedProduct.Add(this.lbl_total.Text);
-            purchasedProduct.Add(date.ToString("yyyy/MM/dd"));
+            List<string> purchasedProductList = new List<string>();
+            purchasedProductList.Add(this.combo_category_name.SelectedValue.ToString());
+            purchasedProductList.Add(this.combo_product_name.SelectedValue.ToString());
+            purchasedProductList.Add(this.combo_unit_name.SelectedValue.ToString());
+            purchasedProductList.Add(this.text_price.Text);
+            purchasedProductList.Add(this.text_quantity.Text);
+            purchasedProductList.Add(this.lbl_total.Text);
+            purchasedProductList.Add(date.ToString("yyyy/MM/dd"));
 
-            this.repo.SavePurchasedProduct(purchasedProduct);
+            this.repo.SavePurchasedProduct(purchasedProductList);
 
             this.repo.UpdateMonthes(date.Date.ToString("yyyy"), date.Date.ToString("MM"));
 
             this.combo_years_SelectedIndexChanged(this.combo_years, EventArgs.Empty);
+        }
+
+        private Product CreateProduct()
+        {
+            return new Product()
+            {
+                ProductNameId = int.Parse(this.combo_product_name.SelectedValue.ToString()),
+                ProductName = this.combo_category_name.SelectedText.ToString(),
+
+                UnitId = int.Parse(this.combo_unit_name.SelectedValue.ToString()),
+                UnitName = this.combo_unit_name.SelectedText.ToString(),
+
+                CategoryId = int.Parse(this.combo_category_name.SelectedValue.ToString()),
+                Amount = double.Parse(this.text_quantity.Text),
+                PurchaningPrice = double.Parse(this.text_price.Text),
+            };
         }
 
         private void combo_years_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,7 +150,7 @@ namespace UserControls
             this.text_quantity.Text = this.dgv_purchases.Rows[e.RowIndex].Cells[4].Value.ToString();
 
             SettingPrices setting_prices = new SettingPrices();
-            setting_prices.ShowDialog(this.lbl_product_name_id.Text, this.lbl_unit_id.Text, this.text_price.Text);
+            setting_prices.ShowDialog(this.CreateProduct());
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)

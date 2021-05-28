@@ -38,7 +38,7 @@ namespace DataAccessLayer
             }
             if (table.Rows.Count == 0)
             {
-                throw new Exception("No data returned !");
+                return null;
             }
             return table.Rows[0];
         }
@@ -78,7 +78,15 @@ namespace DataAccessLayer
             using (SQLiteCommand cmd = new SQLiteCommand(sql, this.conn))
             {
                 cmd.Parameters.AddRange(this.SqlToSQLiteParameters(param));
-                return cmd.ExecuteNonQuery();
+                try
+                {
+                    return cmd.ExecuteNonQuery();
+                }
+                catch(SQLiteException ex)
+                {
+                    Console.WriteLine(ex.Message + " : " + param[0].Value);
+                    return 0;
+                }
             }
         }
 

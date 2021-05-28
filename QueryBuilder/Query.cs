@@ -61,6 +61,20 @@ namespace QueryBuilder
             {
                 throw new Exception("columns count not equal values count");
             }
+
+            this.QueryString += "(";
+
+            for(int i = 0; i < columns.Length; i++)
+            {
+                this.QueryString += columns[i];
+                if (i < columns.Length - 1)
+                {
+                    this.QueryString += ", ";
+                }
+            }
+
+            this.QueryString += ") ";
+
             this.QueryString += "VALUES (";
 
             for (int i = 0; i < values.Length; i++)
@@ -164,7 +178,7 @@ namespace QueryBuilder
 
         public Query OrderBy(string column, SordOrder order = SordOrder.ASC)
         {
-            this.QueryString += $"ORDER BY {column} {order}";
+            this.QueryString += $"ORDER BY {column} {order} ";
             return this;
         }
 
@@ -186,6 +200,12 @@ namespace QueryBuilder
         public Query On(string leftColumn, string rightColumn)
         {
             this.QueryString += $"ON {leftColumn} = {rightColumn} ";
+            return this;
+        }
+
+        public Query Limit(int num)
+        {
+            this.QueryString += $"LIMIT {num} ";
             return this;
         }
 

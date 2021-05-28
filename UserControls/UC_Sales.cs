@@ -13,289 +13,261 @@ namespace UserControls
     {
         private SalesRepo repo;
         private ProductsRepo productsRepo;
+        private int CurrentRowIndex;
+
+        private Product CurrentProduct;
+        private readonly Timer timer = new Timer() { Interval = 10 };
+
         public int LastSerial { get; set; }
         public string WorkDay { get; set; }
         public string NextProcessId { get; set; }
 
-        private Product CurrentProduct = new Product();
-        private readonly Timer timer = new Timer();
-
-
         public UC_Sales()
         {
             this.InitializeComponent();
-            foreach (DataGridViewColumn col in this.dgv_sales.Columns)
-            {
-                col.ContextMenuStrip = this.dgvDailySalesProperties;
-            }
-
-            this.combo_category_name.DisplayMember = "category";
-            this.combo_category_name.ValueMember = "id";
-            this.combo_product_name.DisplayMember = "product_name";
-            this.combo_product_name.ValueMember = "product_id";
         }
 
         private void UC_DailySales_Load(object sender, EventArgs e)
         {
+            foreach (DataGridViewColumn col in this.DgvSales.Columns)
+            {
+                col.ContextMenuStrip = this.dgvDailySalesProperties;
+            }
 
+            this.ComboCategoryName.DisplayMember = "category";
+            this.ComboCategoryName.ValueMember = "id";
+            this.ComboProductName.DisplayMember = "product_name";
+            this.ComboProductName.ValueMember = "product_id";
+            this.DgvSales.DoubleBuffered(true);
+            this.LblWorkDay.Text = this.DatePickerWork_day.Value.ToString("ddd") + " " + this.DatePickerWork_day.Value.ToString("yyyy/M/d");
+            this.WorkDay = this.DatePickerWork_day.Value.ToString("yyyyMMdd");
         }
+
         public void Start()
         {
-            this.dgv_sales.DoubleBuffered(true);
             this.repo = new SalesRepo();
             this.productsRepo = new ProductsRepo();
 
-            this.lbl_work_day.Text = this.date_picker_work_day.Value.ToString("ddd") + " " + this.date_picker_work_day.Value.ToString("yyyy/M/d");
-            this.WorkDay = this.date_picker_work_day.Value.ToString("yyyyMMdd");
-            this.lbl_day_total.Text = "0";
-            this.timer.Interval = 10;
-            this.timer.Tick += this.TimerTick;
-            this.timer.Start();
+            this.DatePickerWork_day.Value = DateTime.Now.Date;
 
-            this.date_picker_work_day.Value = DateTime.Now.Date;
-
-            this.viewWorkDaySales();
-            this.dgv_sales.CellValueChanged += this.dgv_sales_CellValueChanged;
+            this.ViewWorkDaySales(this.DatePickerWork_day.Value.ToShortDateString());
 
             using (CategoriesRepo categoriesRepo = new CategoriesRepo())
             {
-                this.combo_category_name.DataSource = categoriesRepo.GetCategories();
+                this.ComboCategoryName.DataSource = categoriesRepo.GetCategories();
             }
 
-            this.combo_category_name.SelectedValueChanged += this.combo_category_name_SelectedValueChanged;
-            this.combo_category_name_SelectedValueChanged(this.combo_category_name, EventArgs.Empty);
-            this.combo_product_name.SelectedValueChanged += this.combo_product_name_SelectedValueChanged;
-            this.combo_product_name_SelectedValueChanged(this.combo_product_name, EventArgs.Empty);
+            this.BindEvents();
+            this.timer.Start();
         }
 
-
-        private void combo_category_name_SelectedValueChanged(object sender, EventArgs e)
+        private void BindEvents()
         {
-            this.lbl_category_id.Text = this.combo_category_name.SelectedValue.ToString();
-            this.combo_product_name.DataSource = this.productsRepo.GetCategoryProducts(this.combo_category_name.SelectedValue.ToString());
+            this.DgvSales.CellValueChanged += this.DgvSalesCellValueChanged;
+            this.timer.Tick += this.TimerTick;
+            this.ComboCategoryName.SelectedValueChanged += this.ComboCategoryNameSelectedValueChanged;
+            this.ComboCategoryNameSelectedValueChanged(this.ComboCategoryName, EventArgs.Empty);
+            this.ComboProductName.SelectedValueChanged += this.ComboProductNameSelectedValueChanged;
+            this.ComboProductNameSelectedValueChanged(this.ComboProductName, EventArgs.Empty);
         }
 
-
-        private void combo_product_name_SelectedValueChanged(object sender, EventArgs e)
+        private void ViewWorkDaySales(string date)
         {
+            this.DgvSales.DataSource = this.repo.GetSalesByDate(date);
+        }
 
-            if (this.combo_product_name.SelectedValue != null)
+        private void UpateTotal()
+        {
+            double.TryParse(this.LblPrice.Text, out double price);
+            double.TryParse(this.TextQuantity.Text, out double quantity);
+            this.LblTotal.Text = (price * quantity).ToString();
+        }
+
+        private void TextQuantityTextChanged(object sender, EventArgs e)
+        {
+            if (!double.TryParse(this.TextQuantity.Text, out _) && !this.TextQuantity.Text.Contains('.'))
             {
-                this.lbl_product_id.Text = this.combo_product_name.SelectedValue.ToString();
-
-                this.CurrentProduct = this.productsRepo.GetProductById(this.combo_product_name.SelectedValue.ToString());
-
-                this.lbl_price.Text = this.CurrentProduct.SellingPrice.ToString();
-                this.lbl_unit.Text = this.CurrentProduct.UnitName.ToString();
-
-
-                this.upateTotal();
-                this.text_quantity.Focus();
-                this.text_quantity.SelectAll();
+                this.TextQuantity.Text = "0.0";
+                this.TextQuantity.SelectAll();
             }
+            this.UpateTotal();
         }
 
-        private void viewWorkDaySales()
+        private void TextQuantityMouseClick(object sender, MouseEventArgs e)
         {
-            this.dgv_sales.DataSource = this.repo.GetDaySales(this.WorkDay);
-            this.NextProcessId = this.generateProcessID((DataTable)this.dgv_sales.DataSource);
+            this.TextQuantity.SelectAll();
         }
 
-        private string generateProcessID(DataTable t)
+        private void ComboCategoryNameSelectedValueChanged(object sender, EventArgs e)
         {
-            string last_process_id;
-            if (t.Rows.Count == 0)
+            this.LblCategoryId.Text = this.ComboCategoryName.SelectedValue.ToString();
+            this.ComboProductName.DataSource = this.productsRepo.GetCategoryProducts(this.ComboCategoryName.SelectedValue.ToString());
+        }
+
+
+        private void ComboProductNameSelectedValueChanged(object sender, EventArgs e)
+        {
+
+            if (this.ComboProductName.SelectedValue != null)
             {
-                this.LastSerial = 1;
-                return this.WorkDay + "000" + this.LastSerial.ToString();
-            }
-            else
-            {
-                last_process_id = t.Rows[t.Rows.Count - 1][0].ToString();
-                this.LastSerial = int.Parse(last_process_id.Substring(8));
-                double day_total = 0;
+                this.LblProductId.Text = this.ComboProductName.SelectedValue.ToString();
 
-                foreach (DataRow dr in t.Rows)
-                {
-                    day_total += double.Parse(dr["total"].ToString());
-                }
-                this.dgv_sales.DataSource = t;
-                this.lbl_day_total.Text = day_total.ToString();
-                this.LastSerial++;
-                return this.WorkDay.PadRight(12 - this.LastSerial.ToString().Length, '0') + (this.LastSerial).ToString();
+                string currentProductId = this.ComboProductName.SelectedValue.ToString();
+                this.CurrentProduct = this.productsRepo.GetProductById(this.ComboProductName.SelectedValue.ToString());
+                this.CurrentProduct.ProductID = int.Parse(currentProductId);
 
+                this.LblPrice.Text = this.CurrentProduct.SellingPrice.ToString();
+                this.LblUnit.Text = this.CurrentProduct.UnitName.ToString();
+
+
+                this.UpateTotal();
+                this.TextQuantity.Focus();
+                this.TextQuantity.SelectAll();
             }
         }
 
-        private void updateNextProcessID()
+        private void BtnSaveClick(object sender, EventArgs e)
         {
-            this.LastSerial++;
-            this.NextProcessId = this.WorkDay.PadRight(12 - this.LastSerial.ToString().Length, '0') + (this.LastSerial).ToString();
-        }
-
-        private void upateTotal()
-        {
-            double price = 0, quantity = 0;
-            double.TryParse(this.lbl_price.Text, out price);
-            double.TryParse(this.text_quantity.Text, out quantity);
-            this.lbl_total.Text = (price * quantity).ToString();
-        }
-
-        private void text_quantity_TextChanged(object sender, EventArgs e)
-        {
-            double quantity;
-            if (!double.TryParse(this.text_quantity.Text, out quantity) && !this.text_quantity.Text.Contains('.'))
-            {
-                this.text_quantity.Text = "0.0";
-                this.text_quantity.SelectAll();
-            }
-            this.upateTotal();
-        }
-
-        private void text_quantity_MouseClick(object sender, MouseEventArgs e)
-        {
-            this.text_quantity.SelectAll();
-        }
-
-        private void btn_save_Click(object sender, EventArgs e)
-        {
-            double x;
-            if (this.text_quantity.Text == "0" || !double.TryParse(this.text_quantity.Text, out x))
+            if (this.TextQuantity.Text == "0" || !double.TryParse(this.TextQuantity.Text, out _))
                 return;
-            List<string> data = new List<string>();
+            List<string> data = this.GetSoldData();
+            DataRow lastInsertedRow = this.repo.CreateSales(data);
+            if (lastInsertedRow != null)
+                this.UpdateSalesView(lastInsertedRow);
+        }
 
+        private List<string> GetSoldData()
+        {
+            return new List<string>
+            {
+                this.CurrentProduct.ProductID.ToString(),
 
-            data.Add(this.NextProcessId);
-            data.Add(this.CurrentProduct.ProductID.ToString());
+                this.TextQuantity.Text,
+                this.CurrentProduct.SellingPrice.ToString(),
 
-            data.Add(this.text_quantity.Text);
-            data.Add(this.CurrentProduct.SellingPrice.ToString());
+                this.LblTotal.Text,
+                DateTime.Now.ToString("HH:mm:ss"),
+                DateTime.Now.Date.ToShortDateString(),
+                this.CurrentProduct.CategoryId.ToString(),
 
-            data.Add(this.lbl_total.Text);
-            data.Add(DateTime.Now.ToString("HH:mm:ss"));
-            data.Add(DateTime.Now.Date.ToShortDateString());
-            data.Add(this.CurrentProduct.CategoryId.ToString());
+                this.CurrentProduct.UnitId.ToString()
+            };
+        }
 
-            data.Add(this.CurrentProduct.UnitId.ToString());
+        private void UpdateSalesView(DataRow insertedRow)
+        {
+            ((DataTable)this.DgvSales.DataSource).ImportRow(insertedRow);
+            this.TextQuantity.Text = "0";
+            this.TextQuantity.Focus();
+            this.TextQuantity.SelectAll();
 
-            this.repo.CreateSales(data);
-
-            ((DataTable)this.dgv_sales.DataSource).Rows.Add(this.repo.GetSalesOfProcess(this.NextProcessId).ItemArray);
-            this.text_quantity.Text = "0";
-            this.text_quantity.Focus();
-            this.text_quantity.SelectAll();
-            this.updateNextProcessID();
-
-            double day_total = double.Parse(this.lbl_day_total.Text.ToString());
-            day_total += double.Parse(this.dgv_sales.Rows[this.dgv_sales.Rows.Count - 1].Cells[7].Value.ToString());
-            this.lbl_day_total.Text = day_total.ToString();
-            this.dgv_sales.FirstDisplayedScrollingRowIndex = this.dgv_sales.Rows.Count - 1;
+            double DayTotal = double.Parse(this.LblDayTotal.Text.ToString());
+            DayTotal += double.Parse(this.DgvSales.Rows[this.DgvSales.Rows.Count - 1].Cells[7].Value.ToString());
+            this.LblDayTotal.Text = DayTotal.ToString();
+            this.DgvSales.FirstDisplayedScrollingRowIndex = this.DgvSales.Rows.Count - 1;
         }
 
         private void TimerTick(object sender, EventArgs e)
         {
-            this.lbl_clock.Text = DateTime.Now.ToLongTimeString();
+            this.LblClock.Text = DateTime.Now.ToLongTimeString();
         }
 
-        private void text_quantity_MouseClick_1(object sender, MouseEventArgs e)
+        private void TextQuantityClicked(object sender, MouseEventArgs e)
         {
-            this.text_quantity.SelectAll();
+            this.TextQuantity.SelectAll();
         }
 
-        private void text_quantity_KeyDown(object sender, KeyEventArgs e)
+        private void TextQuantityKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                this.btn_save.PerformClick();
+                this.BtnSave.PerformClick();
             }
         }
 
-
-        private int current_row_index;
-
-        private void dgv_sales_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DgvSalesCellMouseClicked(object sender, DataGridViewCellMouseEventArgs e)
         {
-            this.current_row_index = e.RowIndex;
+            this.CurrentRowIndex = e.RowIndex;
         }
 
-        private void delete_Click(object sender, EventArgs e)
+        private void DeleteClicked(object sender, EventArgs e)
         {
-            DataGridViewSelectedRowCollection selected = this.dgv_sales.SelectedRows;
+            DataGridViewSelectedRowCollection selected = this.DgvSales.SelectedRows;
             if (selected.Count > 0)
             {
                 for (int i = 0; i < selected.Count; i++)
                 {
                     this.repo.RemoveSales(selected[i].Cells[0].Value.ToString());
-                    this.dgv_sales.Rows.Remove(selected[i]);
+                    this.DgvSales.Rows.Remove(selected[i]);
                 }
                 MessageBox.Show("تم الحذف", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                this.dgv_sales.ClearSelection();
-                this.dgv_sales.Rows[this.current_row_index].Selected = true;
+                this.DgvSales.ClearSelection();
+                this.DgvSales.Rows[this.CurrentRowIndex].Selected = true;
 
-                this.repo.RemoveSales(this.dgv_sales.Rows[this.current_row_index].Cells[0].Value.ToString());
-                this.dgv_sales.Rows.RemoveAt(this.current_row_index);
+                this.repo.RemoveSales(this.DgvSales.Rows[this.CurrentRowIndex].Cells[0].Value.ToString());
+                this.DgvSales.Rows.RemoveAt(this.CurrentRowIndex);
                 MessageBox.Show("تم الحذف", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if (this.dgv_sales.Rows.Count == 0)
+            if (this.DgvSales.Rows.Count == 0)
             {
                 this.LastSerial = 0;
             }
         }
 
-        public void dgv_sales_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        public void DgvSalesCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 5 || e.ColumnIndex == 6)
             {
-                double day_total = double.Parse(this.lbl_day_total.Text);
-                day_total = day_total - double.Parse(this.dgv_sales.Rows[e.RowIndex].Cells[7].Value.ToString());
-                this.lbl_day_total.Text = day_total.ToString();
+                double dayTotal = double.Parse(this.LblDayTotal.Text);
+                dayTotal = dayTotal - double.Parse(this.DgvSales.Rows[e.RowIndex].Cells[7].Value.ToString());
+                this.LblDayTotal.Text = dayTotal.ToString();
                 double amount, price, total;
-                string process_id;
-                amount = double.Parse(this.dgv_sales.Rows[e.RowIndex].Cells[5].Value.ToString());
-                price = double.Parse(this.dgv_sales.Rows[e.RowIndex].Cells[6].Value.ToString());
+                string processId;
+                amount = double.Parse(this.DgvSales.Rows[e.RowIndex].Cells[5].Value.ToString());
+                price = double.Parse(this.DgvSales.Rows[e.RowIndex].Cells[6].Value.ToString());
                 total = amount * price;
-                process_id = this.dgv_sales.Rows[e.RowIndex].Cells[0].Value.ToString();
+                processId = this.DgvSales.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                this.repo.UpdateSales(process_id, price, amount, total);
-                this.dgv_sales.Rows[e.RowIndex].Cells[7].Value = total;
-                day_total += total;
-                this.lbl_day_total.Text = day_total.ToString();
+                this.repo.UpdateSales(processId, price, amount, total);
+                this.DgvSales.Rows[e.RowIndex].Cells[7].Value = total;
+                dayTotal += total;
+                this.LblDayTotal.Text = dayTotal.ToString();
             }
 
         }
 
-        private void workDay_ValueChanged(object sender, EventArgs e)
+        private void WorkDayValueChanged(object sender, EventArgs e)
         {
-            this.lbl_work_day.Text = this.date_picker_work_day.Value.ToString("ddd") + " " + this.date_picker_work_day.Value.ToString("yyyy/M/d");
-            this.WorkDay = this.date_picker_work_day.Value.ToString("yyyyMMdd");
-            this.viewWorkDaySales();
+            this.LblWorkDay.Text = this.DatePickerWork_day.Value.ToString("ddd") + " " + this.DatePickerWork_day.Value.ToString("yyyy/M/d");
+            this.WorkDay = this.DatePickerWork_day.Value.ToString("yyyyMMdd");
+            this.ViewWorkDaySales(this.DatePickerWork_day.Value.ToShortDateString());
         }
 
-        private void gbtn_view_products_Click(object sender, EventArgs e)
+        private void GbtnViewProductsClick(object sender, EventArgs e)
         {
             FormAllCategoryProducts all = new FormAllCategoryProducts();
-            all.SelectedProductChanged += this.all_SelectedProductChanged;
+            all.SelectedProductChanged += this.AllSelectedProductChanged;
 
-            all.ProductSaved += this.all_ProductSaved;
+            all.ProductSaved += this.AllProductSaved;
 
             all.AShowDialog();
         }
 
-        private void all_ProductSaved(object sender, SelectedProductChangedArgs e)
+        private void AllProductSaved(object sender, SelectedProductChangedArgs e)
         {
-            this.combo_category_name.Text = e.CategoryName;
-            this.combo_product_name.SelectedValue = e.ProductName;
-            this.text_quantity.Text = e.Amount;
-            this.btn_save.PerformClick();
+            this.ComboCategoryName.Text = e.CategoryName;
+            this.ComboProductName.SelectedValue = e.ProductName;
+            this.TextQuantity.Text = e.Amount;
+            this.BtnSave.PerformClick();
         }
 
-        private void all_SelectedProductChanged(object sender, SelectedProductChangedArgs e)
+        private void AllSelectedProductChanged(object sender, SelectedProductChangedArgs e)
         {
-            this.combo_category_name.Text = e.CategoryName;
-            this.combo_product_name.SelectedValue = e.ProductName;
+            this.ComboCategoryName.Text = e.CategoryName;
+            this.ComboProductName.SelectedValue = e.ProductName;
         }
 
     }

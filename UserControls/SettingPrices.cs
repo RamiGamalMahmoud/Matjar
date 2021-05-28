@@ -2,28 +2,54 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using Models;
 using Repos;
 
 namespace UserControls
 {
     public partial class SettingPrices : Form
     {
-        ProductsRepo repo;
+        readonly ProductsRepo productsRepo;
+        readonly UnitsContentsRepo unitsContentsRepo;
         public SettingPrices()
         {
             this.InitializeComponent();
-            this.repo = new ProductsRepo();
+            this.productsRepo = new ProductsRepo();
+            this.unitsContentsRepo = new UnitsContentsRepo();
         }
 
-
-        public virtual void ShowDialog(string product_name_id, string purchasing_unit_id, string purchasing_price)
+        public virtual void ShowDialog(Product purchasedProduct)
         {
-            Models.PurchasingProcess.ParseUnits(product_name_id, purchasing_unit_id, purchasing_price);
-            this.dgv_product_name_data.DataSource = this.CreateProductIfoDataTable();
+            List<Product> products = new List<Product>();
+            products.Add(purchasedProduct);
+            DataTable infos = this.unitsContentsRepo.GetUnitsInfo(purchasedProduct.ProductNameId.ToString());
+
+            this.ParseUnits(purchasedProduct, infos, products);
+            this.dgv_product_name_data.DataSource = this.PrepareProducts(products);
+
             this.ShowDialog();
         }
 
-        private DataTable CreateProductIfoDataTable()
+        private void ParseUnits(Product purchasedProduct, DataTable infos, List<Product> output)
+        {
+            Product prod = purchasedProduct.Clone();
+
+
+            foreach (DataRow info in infos.Rows)
+            {
+                if (info["base_unit_id"].ToString() == purchasedProduct.UnitId.ToString())
+                {
+                    prod.UnitId = int.Parse(info["sub_unit_id"].ToString());
+                    double count = double.Parse(info["sub_unit_count"].ToString());
+                    prod.PurchaningPrice = Math.Round(purchasedProduct.PurchaningPrice / count, 2);
+                    prod.Amount = purchasedProduct.Amount * count;
+                    output.Add(prod);
+                    this.ParseUnits(prod, infos, output);
+                }
+            }
+        }
+
+        private DataTable PrepareProducts(List<Product> products)
         {
             DataTable product_info = new DataTable();
             product_info.Columns.Add("product_id");
@@ -33,12 +59,21 @@ namespace UserControls
             product_info.Columns.Add("selling_price");
             product_info.Columns.Add("profit_margin");
 
-            List<Models.PurchasedProduct> list = Models.PurchasingProcess.PurchasedProducts;
-            for (int i = 0; i < list.Count; i++)
+            foreach (Product product in products)
             {
-                product_info.Rows.Add(list[i].ProductID, list[i].ProductName, list[i].UnitName, list[i].PurchasingPrice);
+                DataRow result = this.productsRepo.GetProductByNameIdAndUnitId(product.ProductNameId.ToString(),
+                    product.UnitId.ToString());
+                if (result != null)
+                    product_info.Rows.Add(
+                        result["product_id"],
+                        result["product_name"],
+                        result["unit"],
+                        product.PurchaningPrice,
+                        "0",
+                        "0"
+                        );
             }
-            Models.PurchasingProcess.PurchasedProducts.Clear();
+
             return product_info;
         }
 
@@ -49,7 +84,7 @@ namespace UserControls
             {
                 string[] data = { row["purchasing_price"].ToString(), row["selling_price"].ToString(), row["profit_margin"].ToString() };
                 string productId = row[0].ToString();
-                this.repo.UpdateProduct(data, productId);
+                this.productsRepo.UpdateProduct(data, productId);
             }
             this.Dispose();
         }
